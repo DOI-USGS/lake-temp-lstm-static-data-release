@@ -328,7 +328,8 @@ entities:
       attr-defs: >-
         Variety of secchi depths and k values were synthesized in this data release, including from 
         LAGOS-NE (Soranno and Cheruvelil, 2017), the Water Quality Portal (www.waterqualitydata.us),
-        and others (see Winslow et al., 2017).
+        and others (see Winslow et al., 2017). When available, observed clarity data was used. If observed
+        clarity data was not available modeled clarity values were used.
       data-min: 0.1574074
       data-max: 112.4285
       data-units: meters^-1
