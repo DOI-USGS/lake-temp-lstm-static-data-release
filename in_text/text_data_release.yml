@@ -2024,8 +2024,7 @@ process-description: >-
   This dataset was generated using two modeling frameworks: 1) a lake hydrodynamic model that uses inputs of lake-specific properties and local 
   meteorology to estimate water temperature, and 2)  an entity-aware long short-term memory network trained using lake temperature observations 
   and four lake-specific properties. Lake-specific properties and temperature observations were 
-  aggregated from a variety of sources and cooperators for lakes across the US Midwest. Meteorological inputs for the contemporary period (1979-
-  2022) used by both modeling frameworks were downloaded from the North American Land Data Assimilation System (NLDAS, Mitchell et al., 2004). Differences
+  aggregated from a variety of sources and cooperators for lakes across the US Midwest. Lakes included in this dataset must appear in the NHD high-resolution dataset and be at least 4 hectares in area. Additional modeling requirements further limited the overall dataset. Meteorological inputs for the contemporary period (1979- 2022) used by both modeling frameworks were downloaded from the North American Land Data Assimilation System (NLDAS, Mitchell et al., 2004). Differences
   in model spin-up and spin-down periods between the two modeling frameworks result in different prediction dates for the contemporary period. Meteorological inputs for 
   future climate scenarios used only by the hydrodynamic model were downloaded from the USGS Geo Data Portal (Blodgett et al., 2011) using the R package 
   "geoknife" (Read et al., 2015). The data downloaded was a debiased version of the dataset "Dynamical Downscaling for the Midwest and Great Lakes Basin" (Notaro et al., 2018). 
