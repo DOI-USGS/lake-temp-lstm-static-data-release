@@ -555,7 +555,7 @@ entities:
     data-description: >- 
       Lake-specific depth-area relationships, which form a hypsographic curve. Available for
       13,785 lakes in this study. A lake must have more than just the surface area to be 
-      included here. The maximum number of depth-area pairs for a single lake is 385, but most
+      included here. The maximum number of depth-area pairs for a single lake is 143, but most
       have just 2 values (the surface area and one other).
     attributes:
     -
@@ -576,7 +576,7 @@ entities:
         For each lake, values start at the surface (0) and go to the deepest value with a known area.
       attr-defs: NA
       data-min: 0
-      data-max: 383.438
+      data-max: 148
       data-units: meters
     -
       attr-label: areas
