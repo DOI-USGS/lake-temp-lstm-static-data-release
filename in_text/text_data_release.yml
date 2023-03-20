@@ -412,7 +412,7 @@ entities:
   -
     data-name: lake_id_crosswalk.csv
     data-description: >- 
-      Mapping between the identifications for lakes used in this data release ("site_id") to X different 
+      Mapping between the identifications for lakes used in this data release ("site_id") to 13 different 
       state or other organization identification systems. Note that the mapping is not always a 1:1, 
       meaning that some lakes in this study's identification system map to more than one lake id from
       another and vice versa. For this file, "NA" represents no match between the IDs.
