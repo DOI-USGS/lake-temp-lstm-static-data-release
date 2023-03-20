@@ -126,6 +126,9 @@ prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, 
     left_join(nldas_driver_info, by = "site_id") %>% 
     mutate(meteo_zip = basename(sprintf(nldas_zipfile_pattern, meteo_grp))) %>%
     left_join(gcm_driver_info, by = "site_id") %>% 
+    # Apply some simplifying for significant figures
+    mutate(Kw = signif(Kw, 4),
+           lake_depth = signif(lake_depth, 3)) %>% 
     # Rename and organize final columns
     select(site_id, 
            lake_name = GNIS_Name,
