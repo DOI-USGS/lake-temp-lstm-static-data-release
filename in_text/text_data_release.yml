@@ -334,6 +334,15 @@ entities:
       data-max: 112.4285
       data-units: meters^-1
     -
+      attr-label: num_observ
+      attr-def: >- 
+        The number of temperature observations available in `lake_temperature_obervations.zip` for
+        each lake. 8,670 lakes have at least one temperature observation available.
+      attr-defs: NA
+      data-min: 0
+      data-max: 63741
+      data-units: NA
+    -
       attr-label: driver_nldas_zipfile
       attr-def: >- 
         A filepath corresponding to a ZIP file containing the NLDAS meteorological CSVs. Values match
