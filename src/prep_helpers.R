@@ -110,6 +110,8 @@ prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, 
     mutate(site_id = lake_centroids_sf$site_id) %>% 
     left_join(readRDS(lake_gnis_names_file), by = "site_id") %>% 
     left_join(ungroup(readRDS(lake_depths_file)), by = "site_id") %>% 
+    # Convert 0 max depths to NAs, see https://github.com/USGS-R/lake-temp-lstm-static-data-release/issues/39
+    mutate(lake_depth = ifelse(lake_depth == 0, as.numeric(NA), lake_depth)) %>% 
     left_join(ungroup(readRDS(lake_clarity_file)), by = "site_id") %>% 
     # ADD LSTM-specific metadata
     left_join(read_csv(lstm_metadata_file), by = c("site_id", "GNIS_Name")) %>% 
