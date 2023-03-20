@@ -229,7 +229,7 @@ cross-cites:
     link: http://www.glfc.org/pubs/SpecialPubs/Sp87_3.pdf
 
 process-date: !expr format(Sys.time(),'%Y%m%d')
-file-format: a single comma-delimited file and a single zipped shapefile
+file-format: Five comma-delimited files, one zipped shapefile, nine zip files containing comma-delimited files, ten zip files containing netCDF files, two R scripts, and a single PNG file
 
 entities:
   -
@@ -878,8 +878,8 @@ entities:
     -
       attr-label: depth
       attr-def: >- 
-        Depth of the temperature prediction. The interval between depths starts at half meters, but increases at
-        deeper depths. 
+        Depth of the temperature prediction. The top 10 meters of the lake were discretized into 0.5 m intervals. From 10 to 
+        20 m, 1 m intervals were used. From 20 to 40 m, 2 m intervals were used. From 40 to 80 m, 5 m intervals were used.
       attr-defs: NA
       data-min: NA
       data-max: NA
@@ -2033,13 +2033,17 @@ process-description: >-
   The GCM windspeeds were abnormally low compared to the NLDAS windspeed for the same date and location. As windspeed is an important factor in 
   lake temperature modeling due to its impact on mixing, the GCM windspeeds between 1980-1999 were statistically transformed, such that they 
   aligned with the distribution of windspeed from NLDAS. The same statistical transform was applied to the GCM windspeeds for future dates. 
+
+  In this data release, lakes were discretized into a series of depth intervals for EALSTM modeling input/output. The top 10 meters of the lake were discretized 
+  into 0.5 m intervals. From 10 to 20 m, 1 m intervals were used. From 20 to 40 m, 2 m intervals were used. From 40 to 80 m, 5 m intervals were used. These same depth 
+  intervals were used for the GLM output.
   
-  Our chosen hydrodynamic model is the open source, General Lake Model (GLM) version 3 (Hipsey et al, 2019). GLM is a one-dimensional dynamical model which simplifies 
+  Our chosen hydrodynamic model is the open source, General Lake Model (GLM) version 3.2.0a8 (Hipsey et al, 2019). GLM is a one-dimensional dynamical model which simplifies 
   lakes using a vertical approximation, where horizontal variability is ignored. GLM uses a Lagrangian approach to layer structure where layers can 
   split and combine based on changing vertical gradients. GLM is a modern implementation of other one-dimensional models. We used GLM to run individual 
   lake simulations according to the processes described in Winslow et al. 2017 for both the contemporary period (using NLDAS as the meteorological
-  inputs) and future climate scenarios (using GCM as the meteorological inputs). Outputs for water temperature were extracted at various depths and 
-  written or summarized to the files included in this set of data. In addition, a set of 172 annual metrics summarizing different thermal properties
+  inputs) and future climate scenarios (using GCM as the meteorological inputs). Outputs for water temperature were extracted at various depths (interval pattern 
+  described above) and written or summarized to the files included in this set of data. In addition, a set of 172 annual metrics summarizing different thermal properties
   of interest were derived from the daily temperature outputs for each lake.
   
   Lake temperature estimates were generated using an Entity-Aware Long Short-Term Memory network (EA-LSTM), as described by Kratzert et al., 2019.
@@ -2056,8 +2060,7 @@ process-description: >-
   data were used to train the EA-LSTM, twenty percent were used for validation during training and hyperparameter selection, and twenty percent were
   used to evaluate the final model's performance. Data were split by lake to avoid data leakage.
   
-  Lakes were discretized into a series of depth intervals. The top 10 meters of the lake were discretized into 0.5 m intervals. From 10 to 20 m, 1 m
-  intervals were used. From 20 to 40 m, 2 m intervals were used. From 40 to 80 m, 5 m intervals were used. Observations were binned based on the
+  Lakes were discretized using the same pattern described above (smaller intervals at shallow depths getting larger at deeper depths). Observations were binned based on the
   discretized depth interval into which the depth of the observation fell. The EA-LSTM was trained to predict one temperature per depth interval at
   each time step. To allow temperature predictions at multiple depths, the number of outputs of the final fully connected layer was changed to equal
   the number of depth intervals.
