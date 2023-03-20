@@ -869,22 +869,6 @@ entities:
       data-max: 2099-12-31
       data-units: NA
     -
-      attr-label: lats
-      attr-def: >-
-        Latitude of the lake centroid; equivalent to `centroid_lat` column from the 'lake_metadata.csv' file
-      attr-defs: NA
-      data-min: NA
-      data-max: NA
-      data-units: decimal-degrees
-    -
-      attr-label: lons
-      attr-def: >-
-        Longitude of the lake centroid; equivalent to `centroid_lon` column from the 'lake_metadata.csv' file
-      attr-defs: NA
-      data-min: NA
-      data-max: NA
-      data-units: decimal-degrees
-    -
       attr-label: depth
       attr-def: >- 
         Depth of the temperature prediction. The interval between depths starts at half meters, but increases at
