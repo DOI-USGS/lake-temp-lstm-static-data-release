@@ -1,3 +1,9 @@
+#################################################################
+# Author: Hayley Corson-Dosch                                   #
+# Email: hcorson-dosch@usgs.gov                                 #
+# Content: workflow for extracting GLM output from netCDF files #
+#################################################################
+
 library(RNetCDF)
 library(ncmeta) # need version 0.3.5 or higher - devtools::install_github("https://github.com/hypertidy/ncmeta.git")
 library(tidyverse)
