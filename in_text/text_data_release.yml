@@ -2058,7 +2058,9 @@ process-description: >-
   squared error of the temperature predictions was used as a loss function. Predictions made during the first 100 days were not included in the loss
   function to allow time for the LSTM cell state to accurately represent the thermal state of the lake. Sixty percent of the available observational
   data were used to train the EA-LSTM, twenty percent were used for validation during training and hyperparameter selection, and twenty percent were
-  used to evaluate the final model's performance. Data were split by lake to avoid data leakage.
+  used to evaluate the final model's performance. In order to divide the data among these three splits, data were grouped by lake, and each lake was
+  randomly assigned to one of the three splits in such a way that the desired data proportions were achieved. Data were split by lake in this way to
+  ensure that the test set could be used fairly to evaluate model performance on unobserved lakes.
   
   Lakes were discretized using the same pattern described above (smaller intervals at shallow depths getting larger at deeper depths). Observations were binned based on the
   discretized depth interval into which the depth of the observation fell. The EA-LSTM was trained to predict one temperature per depth interval at
