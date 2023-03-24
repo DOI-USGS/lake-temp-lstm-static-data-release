@@ -2064,6 +2064,12 @@ process-description: >-
   
   The hidden layer size was 256. No dropout was used. The Adam optimizer (Kingma et al., 2015) was used with a learning
   rate of 0.005. Early stopping was used to determine the optimal number of training epochs with a stopping patience of 50 epochs.
+
+  The EA-LSTM was trained on temperature observations alone, without physics-based guidance. As a result, the model can produce some physically
+  unrealistic predictions. We have observed sudden drops in predicted lake temperature below freezing which last for one or two days. These cold
+  predictions usually coincide with a sudden decrease in air temperature. While these sudden drops in lake temperature are physically improbable, we
+  chose to report the neural network's unaltered predictions. Therefore, the EA-LSTM predictions represent a purely data-driven set of predictions
+  that complement the physics-based GLM predictions.
   
   Modeling environment information for both modeling frameworks are captured below.
   
