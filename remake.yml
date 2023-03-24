@@ -95,7 +95,7 @@ targets:
       lakes_in_release = lstm_site_ids,
       earliest_prediction = I('1979-01-02'))
   
-  # TODO: This needs to be split into multiple files! Too big for just one.
+  # This needs to be split into multiple files! Too big for just one.
   out_data/meteorological_inputs_NLDAS_zips.ind:
     command: prep_NLDAS_drivers(
       ind_file = target_name,

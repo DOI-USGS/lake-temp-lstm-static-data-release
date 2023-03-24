@@ -282,11 +282,21 @@ prep_NLDAS_drivers <- function(ind_file, nldas_driver_info, driver_file_dir, tmp
     return(zip_fn)
   }
   
+  # Change the working directory and zip_fn_pattern appropriately
+  # so that we avoid folder structures within the zips.
+  cwd <- getwd()
+  setwd(tmp_dir)
+  tmp_dir_num <- length(unlist(strsplit(tmp_dir, split='/'))) # Count number of dirs to know how many ../ to add
+  zip_fn_pattern <- file.path(paste(rep('..',tmp_dir_num), collapse = '/'), zip_fn_pattern)
+  
   zips_out <- nldas_driver_info_cp %>%
+    mutate(meteo_fl_cp = basename(meteo_fl_cp)) %>% # Update the names to not include the dir
     split(.$meteo_grp) %>% 
     purrr::map(~zip_files(., zip_fn_pattern = zip_fn_pattern)) %>%
     reduce(c)
-
+  
+  setwd(cwd) # Reset the working directory
+  
   # Combine the files that were created into a single ind file
   combine_to_ind(ind_file, zips_out)
 
