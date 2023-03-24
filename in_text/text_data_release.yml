@@ -2046,9 +2046,8 @@ process-description: >-
   Temperature profiles were predicted for 62966 lakes in the North American continent from 1979 to 2022. The EA-LSTM network used daily
   temperature observations from 7556 lakes. Inputs to the model were seven meteorological drivers derived from NLDAS (Mitchell et al., 2004) for the time period 1979-2022,
   and four static lake attributes: latitude, longitude, surface area, and lake elevation above sea level. The data aggregation methods used to 
-  assemble the temperature profile data and the lake attributes are described in Willard et al. 2022. This data release used these methods to
-  aggregate additional cooperator data. This data release also used full temperature profiles for each sampling date rather than only using surface
-  temperatures.
+  assemble the temperature profile data and the lake attributes are described in Willard et al. 2022; however, this data release included additional
+  cooperator data and used full temperature profiles for each sampling date rather than only using surface temperatures.
   
   To train the EA-LSTM, temperature observations were organized into 400-day sequences. Successive sequences overlapped by 200 days. The mean
   squared error of the temperature predictions was used as a loss function. Predictions made during the first 100 days were not included in the loss
