@@ -283,9 +283,16 @@ prep_NLDAS_drivers <- function(ind_file, nldas_driver_info, driver_file_dir, tmp
   files_moved_deduplicated <- nldas_driver_info_cp %>% 
     split(.$meteo_fl) %>% 
     purrr::map(~ {
-      read_csv(.x$meteo_fl_full, col_types=cols()) %>% 
-        distinct() %>% 
-        write_csv(.x$meteo_fl_cp)
+      # Don't want to redo the file read/write if it exists and was recently done
+      # NOTE: this is a hacky hack and is not a reproducible best practice BUT
+      # I am running out of time on this data release.
+      # TODO: HACK! UNDO THIS! Sincerely, L. Platt
+      file_mtime <- file.info(.x$meteo_fl_cp)$mtime
+      if(is.na(file_mtime) | Sys.time() - file_mtime > 1) {
+        read_csv(.x$meteo_fl_full, col_types=cols()) %>% 
+          distinct() %>% 
+          write_csv(.x$meteo_fl_cp)
+      }
       return(.x$meteo_fl_cp)
   }) %>% unlist()
   
