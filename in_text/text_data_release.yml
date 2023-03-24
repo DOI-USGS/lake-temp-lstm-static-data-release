@@ -728,7 +728,7 @@ entities:
     data-description: >- 
       A zip file containing NetCDF files of the Global Climate Model (GCM) meteorological drivers. Files 
       within the zip are named "GCM_{CLIMATE MODEL}.nc" where the {CLIMATE MODEL} field is one of ACCESS, 
-      CNRM, GFDL, IPSL, MIROC5, and MRI representing the six dynamically downscaled glibal climate models
+      CNRM, GFDL, IPSL, MIROC5, and MRI representing the six dynamically downscaled global climate models
       used (Notaro et al., 2018). The format of the data is identical for each file. Data from these  
       meteorological files can be matched to the appropriate lake using the "driver_gcm_cell_no" column  
       in the "lake_metadata.csv" file of this data release and the "cell_no" attribute in the netCDFs.
