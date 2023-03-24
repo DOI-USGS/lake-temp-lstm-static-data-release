@@ -307,7 +307,7 @@ prep_NLDAS_drivers <- function(ind_file, nldas_driver_info, driver_file_dir, tmp
 prep_GCM_drivers <- function(out_file, driver_file_dir, tmp_dir, gcm_driver_regex) {
   # The GCM drivers are coming from a targets repo, not scipiper so no need for `scipiper_freshen_files()`
   # This will need to be run on Tallgrass in order to have the most up-to-date data, though.
-  files_to_zip <- list.files(driver_file_dir, pattern = gcm_driver_regex, full.names = TRUE)
+  files_to_zip <- list.files(driver_file_dir, pattern = gcm_driver_regex, full.names = TRUE)[1:2]
   
   # Before zipping, move the files to the current directory (I got scared by a warning when I was testing
   # this on Tallgrass that said `Some paths reference parent directory, creating non-portable zip file`,
@@ -316,8 +316,17 @@ prep_GCM_drivers <- function(out_file, driver_file_dir, tmp_dir, gcm_driver_rege
   files_moved <- file.path(tmp_dir, basename(files_to_zip))
   file.copy(from = files_to_zip, to = files_moved)
   
+  # Change the working directory and zip_fn_pattern appropriately
+  # so that we avoid folder structures within the zips.
+  cwd <- getwd()
+  setwd(tmp_dir)
+  tmp_dir_num <- length(unlist(strsplit(tmp_dir, split='/'))) # Count number of dirs to know how many ../ to add
+  out_file <- file.path(paste(rep('..',tmp_dir_num), collapse = '/'), out_file)
+  
   # Zip the files!
-  zip::zip(out_file, files = files_moved)
+  zip::zip(out_file, files = basename(files_moved))
+  
+  setwd(cwd) # Reset the working directory
   
   # Delete the recently moved files since they are now in a zip file
   file.remove(files_moved) 
