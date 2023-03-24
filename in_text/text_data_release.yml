@@ -742,7 +742,7 @@ entities:
       attr-defs: NA
       data-min: NA
       data-max: NA
-      data-units: Date
+      data-units: NA
     - 
       attr-label: cell_no
       attr-def: >-
