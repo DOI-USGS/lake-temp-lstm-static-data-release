@@ -280,7 +280,7 @@ prep_NLDAS_drivers <- function(ind_file, nldas_driver_info, driver_file_dir, tmp
   # I'm not sure when/why that was introduced but likely due to a requirement by the 
   # models and we removed the site number column as some point along the way but forgot
   # to remove duplicates. https://github.com/USGS-R/lake-temp-lstm-static-data-release/issues/45
-  files_moved_deduplicated <- nldas_driver_info_cp %>% tail() %>% head(4) %>% 
+  files_moved_deduplicated <- nldas_driver_info_cp %>% 
     split(.$meteo_fl) %>% 
     purrr::map(~ {
       read_csv(.x$meteo_fl_full, col_types=cols()) %>% 
