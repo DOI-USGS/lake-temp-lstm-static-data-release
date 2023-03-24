@@ -265,7 +265,7 @@ prep_NLDAS_drivers <- function(ind_file, nldas_driver_info, driver_file_dir, tmp
     distinct() %>%
     # Add in the full filepath + create a filepath for the new location in this directory
     mutate(meteo_fl_full = file.path(driver_file_dir, meteo_fl),
-           meteo_fl_cp = file.path(tmp_dir, meteo_fl))
+           meteo_fl_cp = file.path(tmp_dir, gsub('_time\\[(0.379366)\\]', '', meteo_fl))) %>% head()
   
   # Before zipping, move the files to the current directory (I got scared by a warning when I was testing
   # this on Tallgrass that said `Some paths reference parent directory, creating non-portable zip file`,
