@@ -2068,7 +2068,7 @@ process-description: >-
   The EA-LSTM was trained on temperature observations alone, without physics-based guidance. As a result, the model can produce some physically
   unrealistic predictions. We have observed sudden drops in predicted lake temperature below freezing which last for one or two days. These cold
   predictions usually coincide with a sudden decrease in air temperature. While these sudden drops in lake temperature are physically improbable, we
-  choose to report the neural network's unaltered predictions. Therefore, the EA-LSTM predictions represent a purely data-driven set of predictions
+  chose to report the neural network's unaltered predictions. Therefore, the EA-LSTM predictions represent a purely data-driven set of predictions
   that complement the physics-based GLM predictions.
   
   Modeling environment information for both modeling frameworks are captured below.
