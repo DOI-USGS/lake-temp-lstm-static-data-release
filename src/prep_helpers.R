@@ -265,15 +265,14 @@ prep_NLDAS_drivers <- function(ind_file, nldas_driver_info, driver_file_dir, tmp
     distinct() %>%
     # Add in the full filepath + create a filepath for the new location in this directory
     mutate(meteo_fl_full = file.path(driver_file_dir, meteo_fl),
-           meteo_fl_cp = file.path(tmp_dir, gsub('_time\\[(0.379366)\\]', '', meteo_fl))) %>% head()
+           meteo_fl_cp = file.path(tmp_dir, gsub('_time\\[(0.379366)\\]', '', meteo_fl)))
   
-  # Before zipping, move the files to the current directory (I got scared by a warning when I was testing
-  # this on Tallgrass that said `Some paths reference parent directory, creating non-portable zip file`,
-  # so I created this solution, which definitely costs more time but gets rid of that warning).
+  # Before zipping, move the files to the current directory. Since they need to each be read in and then
+  # have duplicates removed, we are no longer copying. Instead, we are reading the original file, 
+  # removing duplicates, and then saving the file in the directory for this repo. 
   if(!dir.exists(tmp_dir)) dir.create(tmp_dir)
-  file.copy(from = unique(nldas_driver_info_cp$meteo_fl_full), to = unique(nldas_driver_info_cp$meteo_fl_cp))
   
-  # REMOVE THE DUPLICATES! ALL FILES SHOULD HAVE 15,807 ROWS! This overwrites copied files.
+  # REMOVE THE DUPLICATES! ALL FILES SHOULD HAVE ~15,807 ROWS! This overwrites copied files.
   # This isn't the best practice, but since we are trying to button things up quickly
   # I am adding this step within our big driver prep step. Each of these NLDAS meteo
   # files have duplicated data for some reason. All of them should have 15,807 rows 
@@ -281,9 +280,13 @@ prep_NLDAS_drivers <- function(ind_file, nldas_driver_info, driver_file_dir, tmp
   # I'm not sure when/why that was introduced but likely due to a requirement by the 
   # models and we removed the site number column as some point along the way but forgot
   # to remove duplicates. https://github.com/USGS-R/lake-temp-lstm-static-data-release/issues/45
-  files_updated <- purrr::map(unique(nldas_driver_info_cp$meteo_fl_cp)[1:2], function(fn) {
-    read_csv(fn) %>% distinct() %>% write_csv(fn)
-    return(fn)
+  files_moved_deduplicated <- nldas_driver_info_cp %>% tail() %>% head(4) %>% 
+    split(.$meteo_fl) %>% 
+    purrr::map(~ {
+      read_csv(.x$meteo_fl_full, col_types=cols()) %>% 
+        distinct() %>% 
+        write_csv(.x$meteo_fl_cp)
+      return(.x$meteo_fl_cp)
   }) %>% unlist()
   
   # Zip the files!
