@@ -9,6 +9,7 @@ packages:
   - purrr
   - targets
   - yaml
+  - zip
 
 sources:
   - src/sb_utils.R

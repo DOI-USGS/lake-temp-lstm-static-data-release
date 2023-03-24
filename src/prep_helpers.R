@@ -110,9 +110,12 @@ prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, 
     mutate(site_id = lake_centroids_sf$site_id) %>% 
     left_join(readRDS(lake_gnis_names_file), by = "site_id") %>% 
     left_join(ungroup(readRDS(lake_depths_file)), by = "site_id") %>% 
+    # Convert 0 max depths to NAs, see https://github.com/USGS-R/lake-temp-lstm-static-data-release/issues/39
+    mutate(lake_depth = ifelse(lake_depth == 0, as.numeric(NA), lake_depth)) %>% 
     left_join(ungroup(readRDS(lake_clarity_file)), by = "site_id") %>% 
-    # ADD LSTM-specific metadata
+    # ADD LSTM-specific metadata (it comes with `n_obs`)
     left_join(read_csv(lstm_metadata_file), by = c("site_id", "GNIS_Name")) %>% 
+    mutate(n_obs = replace_na(n_obs, 0)) %>% 
     # Remove sites that don't have any LSTM predictions (those are outside of our scope)
     filter(lstm_predictions) %>% 
     # Add three additional columns indicating whether a particular model is available for that site
@@ -123,6 +126,9 @@ prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, 
     left_join(nldas_driver_info, by = "site_id") %>% 
     mutate(meteo_zip = basename(sprintf(nldas_zipfile_pattern, meteo_grp))) %>%
     left_join(gcm_driver_info, by = "site_id") %>% 
+    # Apply some simplifying for significant figures
+    mutate(Kw = signif(Kw, 4),
+           lake_depth = signif(lake_depth, 3)) %>% 
     # Rename and organize final columns
     select(site_id, 
            lake_name = GNIS_Name,
@@ -133,6 +139,7 @@ prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, 
            area,
            elevation,
            clarity = Kw,
+           num_observ = n_obs,
            driver_nldas_zipfile = meteo_zip,
            driver_nldas_filepath = meteo_fl,
            driver_gcm_cell_no = cell_no,

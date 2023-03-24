@@ -332,9 +332,18 @@ entities:
         LAGOS-NE (Soranno and Cheruvelil, 2017), the Water Quality Portal (www.waterqualitydata.us),
         and others (see Winslow et al., 2017). When available, observed clarity data was used. If observed
         clarity data was not available modeled clarity values were used.
-      data-min: 0.1574074
-      data-max: 112.4285
+      data-min: 0.1574
+      data-max: 112.40
       data-units: meters^-1
+    -
+      attr-label: num_observ
+      attr-def: >- 
+        The number of temperature observations available in `lake_temperature_obervations.zip` for
+        each lake. 8,670 lakes have at least one temperature observation available.
+      attr-defs: NA
+      data-min: 0
+      data-max: 63741
+      data-units: NA
     -
       attr-label: driver_nldas_zipfile
       attr-def: >- 
@@ -405,7 +414,7 @@ entities:
   -
     data-name: lake_id_crosswalk.csv
     data-description: >- 
-      Mapping between the identifications for lakes used in this data release ("site_id") to X different 
+      Mapping between the identifications for lakes used in this data release ("site_id") to 13 different 
       state or other organization identification systems. Note that the mapping is not always a 1:1, 
       meaning that some lakes in this study's identification system map to more than one lake id from
       another and vice versa. For this file, "NA" represents no match between the IDs.
@@ -557,7 +566,7 @@ entities:
     data-description: >- 
       Lake-specific depth-area relationships, which form a hypsographic curve. Available for
       13,785 lakes in this study. A lake must have more than just the surface area to be 
-      included here. The maximum number of depth-area pairs for a single lake is 385, but most
+      included here. The maximum number of depth-area pairs for a single lake is 143, but most
       have just 2 values (the surface area and one other).
     attributes:
     -
@@ -578,7 +587,7 @@ entities:
         For each lake, values start at the surface (0) and go to the deepest value with a known area.
       attr-defs: NA
       data-min: 0
-      data-max: 383.438
+      data-max: 148
       data-units: meters
     -
       attr-label: areas
@@ -861,22 +870,6 @@ entities:
       data-min: 1979-04-12
       data-max: 2099-12-31
       data-units: NA
-    -
-      attr-label: lats
-      attr-def: >-
-        Latitude of the lake centroid; equivalent to `centroid_lat` column from the 'lake_metadata.csv' file
-      attr-defs: NA
-      data-min: NA
-      data-max: NA
-      data-units: decimal-degrees
-    -
-      attr-label: lons
-      attr-def: >-
-        Longitude of the lake centroid; equivalent to `centroid_lon` column from the 'lake_metadata.csv' file
-      attr-defs: NA
-      data-min: NA
-      data-max: NA
-      data-units: decimal-degrees
     -
       attr-label: depth
       attr-def: >- 
