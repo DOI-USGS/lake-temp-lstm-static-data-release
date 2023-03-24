@@ -287,8 +287,8 @@ prep_NLDAS_drivers <- function(ind_file, nldas_driver_info, driver_file_dir, tmp
       # NOTE: this is a hacky hack and is not a reproducible best practice BUT
       # I am running out of time on this data release.
       # TODO: HACK! UNDO THIS! Sincerely, L. Platt
-      file_mtime <- file.info(.x$meteo_fl_cp)$mtime
-      if(is.na(file_mtime) | Sys.time() - file_mtime > 1) {
+      file_mod_date <- as.Date(file.mtime(.x$meteo_fl_cp))
+      if(is.na(file_mod_date) | (Sys.Date() - file_mod_date) > 1) {
         read_csv(.x$meteo_fl_full, col_types=cols()) %>% 
           distinct() %>% 
           write_csv(.x$meteo_fl_cp)
@@ -319,6 +319,7 @@ prep_NLDAS_drivers <- function(ind_file, nldas_driver_info, driver_file_dir, tmp
     reduce(c)
   
   setwd(cwd) # Reset the working directory
+  zips_out <- gsub("\\.\\.\\/", "", zips_out) # Reset the zip file names
   
   # Combine the files that were created into a single ind file
   combine_to_ind(ind_file, zips_out)
