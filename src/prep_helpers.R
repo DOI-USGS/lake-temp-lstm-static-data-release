@@ -273,6 +273,19 @@ prep_NLDAS_drivers <- function(ind_file, nldas_driver_info, driver_file_dir, tmp
   if(!dir.exists(tmp_dir)) dir.create(tmp_dir)
   file.copy(from = unique(nldas_driver_info_cp$meteo_fl_full), to = unique(nldas_driver_info_cp$meteo_fl_cp))
   
+  # REMOVE THE DUPLICATES! ALL FILES SHOULD HAVE 15,807 ROWS! This overwrites copied files.
+  # This isn't the best practice, but since we are trying to button things up quickly
+  # I am adding this step within our big driver prep step. Each of these NLDAS meteo
+  # files have duplicated data for some reason. All of them should have 15,807 rows 
+  # (one row per timestep) across the whole cell (and each file is a different cell).
+  # I'm not sure when/why that was introduced but likely due to a requirement by the 
+  # models and we removed the site number column as some point along the way but forgot
+  # to remove duplicates. https://github.com/USGS-R/lake-temp-lstm-static-data-release/issues/45
+  files_updated <- purrr::map(unique(nldas_driver_info_cp$meteo_fl_cp)[1:2], function(fn) {
+    read_csv(fn) %>% distinct() %>% write_csv(fn)
+    return(fn)
+  }) %>% unlist()
+  
   # Zip the files!
   zip_files <- function(nldas_info_grp, zip_fn_pattern) {
     zip_fn <- sprintf(zip_fn_pattern, unique(nldas_info_grp$meteo_grp))
