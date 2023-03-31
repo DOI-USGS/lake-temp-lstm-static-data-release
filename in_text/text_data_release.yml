@@ -646,7 +646,7 @@ entities:
     data-name: meteorological_inputs_NLDAS_{GROUP}.zip
     data-description: >- 
       A zip file containing CSVs of meteorological inputs aggregated to daily values from the North American Land Data Assimilation System (NLDAS) 
-      meteorological drivers. The value of {GROUP} can be 1 through 8, and the column `driver_nldas_zipfile` in `lake_metadata.csv` 
+      meteorological drivers. The value of {GROUP} can be 1 or 2, and the column `driver_nldas_zipfile` in `lake_metadata.csv` 
       reveals which zip file each lake's NLDAS driver data can be found. Groups were used only so that each NLDAS zip 
       file was less than 10 GB. Files within the zip are named "NLDAS_x{x}_y{y}.csv" where the {x} and {y}
       locations are longitude and latitude indices from NLDAS of the individual meteological spatial data 
