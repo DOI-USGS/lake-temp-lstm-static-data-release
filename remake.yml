@@ -35,7 +35,7 @@ targets:
     command: prep_nldas_driver_info(
       data_file = '../../lake-temp/lake-temperature-lstm-static/6_predict/out/all_meteo_fl_values.csv', 
       lakes_in_release = lstm_site_ids,
-      n_zips = 8)
+      n_zips = 2)
   gcm_cell_to_site_xwalk:
     command: prep_gcm_driver_info(
       data_file = '../../lake-temp/lake-temperature-model-prep/7_drivers_munge/out/lake_cell_tile_xwalk.csv', 
@@ -95,7 +95,7 @@ targets:
       lakes_in_release = lstm_site_ids,
       earliest_prediction = I('1979-01-02'))
   
-  # TODO: This needs to be split into multiple files! Too big for just one.
+  # This needs to be split into multiple files! Too big for just one.
   out_data/meteorological_inputs_NLDAS_zips.ind:
     command: prep_NLDAS_drivers(
       ind_file = target_name,

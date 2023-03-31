@@ -265,13 +265,36 @@ prep_NLDAS_drivers <- function(ind_file, nldas_driver_info, driver_file_dir, tmp
     distinct() %>%
     # Add in the full filepath + create a filepath for the new location in this directory
     mutate(meteo_fl_full = file.path(driver_file_dir, meteo_fl),
-           meteo_fl_cp = file.path(tmp_dir, meteo_fl))
+           meteo_fl_cp = file.path(tmp_dir, gsub('_time\\[(0.379366)\\]', '', meteo_fl)))
   
-  # Before zipping, move the files to the current directory (I got scared by a warning when I was testing
-  # this on Tallgrass that said `Some paths reference parent directory, creating non-portable zip file`,
-  # so I created this solution, which definitely costs more time but gets rid of that warning).
+  # Before zipping, move the files to the current directory. Since they need to each be read in and then
+  # have duplicates removed, we are no longer copying. Instead, we are reading the original file, 
+  # removing duplicates, and then saving the file in the directory for this repo. 
   if(!dir.exists(tmp_dir)) dir.create(tmp_dir)
-  file.copy(from = unique(nldas_driver_info_cp$meteo_fl_full), to = unique(nldas_driver_info_cp$meteo_fl_cp))
+  
+  # REMOVE THE DUPLICATES! ALL FILES SHOULD HAVE ~15,807 ROWS! This overwrites copied files.
+  # This isn't the best practice, but since we are trying to button things up quickly
+  # I am adding this step within our big driver prep step. Each of these NLDAS meteo
+  # files have duplicated data for some reason. All of them should have 15,807 rows 
+  # (one row per timestep) across the whole cell (and each file is a different cell).
+  # I'm not sure when/why that was introduced but likely due to a requirement by the 
+  # models and we removed the site number column as some point along the way but forgot
+  # to remove duplicates. https://github.com/USGS-R/lake-temp-lstm-static-data-release/issues/45
+  files_moved_deduplicated <- nldas_driver_info_cp %>% 
+    split(.$meteo_fl) %>% 
+    purrr::map(~ {
+      # Don't want to redo the file read/write if it exists and was recently done
+      # NOTE: this is a hacky hack and is not a reproducible best practice BUT
+      # I am running out of time on this data release.
+      # TODO: HACK! UNDO THIS! Sincerely, L. Platt
+      file_mod_date <- as.Date(file.mtime(.x$meteo_fl_cp))
+      if(is.na(file_mod_date) | (Sys.Date() - file_mod_date) > 1) {
+        read_csv(.x$meteo_fl_full, col_types=cols()) %>% 
+          distinct() %>% 
+          write_csv(.x$meteo_fl_cp)
+      }
+      return(.x$meteo_fl_cp)
+  }) %>% unlist()
   
   # Zip the files!
   zip_files <- function(nldas_info_grp, zip_fn_pattern) {
@@ -282,11 +305,22 @@ prep_NLDAS_drivers <- function(ind_file, nldas_driver_info, driver_file_dir, tmp
     return(zip_fn)
   }
   
+  # Change the working directory and zip_fn_pattern appropriately
+  # so that we avoid folder structures within the zips.
+  cwd <- getwd()
+  setwd(tmp_dir)
+  tmp_dir_num <- length(unlist(strsplit(tmp_dir, split='/'))) # Count number of dirs to know how many ../ to add
+  zip_fn_pattern <- file.path(paste(rep('..',tmp_dir_num), collapse = '/'), zip_fn_pattern)
+  
   zips_out <- nldas_driver_info_cp %>%
+    mutate(meteo_fl_cp = basename(meteo_fl_cp)) %>% # Update the names to not include the dir
     split(.$meteo_grp) %>% 
     purrr::map(~zip_files(., zip_fn_pattern = zip_fn_pattern)) %>%
     reduce(c)
-
+  
+  setwd(cwd) # Reset the working directory
+  zips_out <- gsub("\\.\\.\\/", "", zips_out) # Reset the zip file names
+  
   # Combine the files that were created into a single ind file
   combine_to_ind(ind_file, zips_out)
 
@@ -306,8 +340,17 @@ prep_GCM_drivers <- function(out_file, driver_file_dir, tmp_dir, gcm_driver_rege
   files_moved <- file.path(tmp_dir, basename(files_to_zip))
   file.copy(from = files_to_zip, to = files_moved)
   
+  # Change the working directory and zip_fn_pattern appropriately
+  # so that we avoid folder structures within the zips.
+  cwd <- getwd()
+  setwd(tmp_dir)
+  tmp_dir_num <- length(unlist(strsplit(tmp_dir, split='/'))) # Count number of dirs to know how many ../ to add
+  out_file <- file.path(paste(rep('..',tmp_dir_num), collapse = '/'), out_file)
+  
   # Zip the files!
-  zip::zip(out_file, files = files_moved)
+  zip::zip(out_file, files = basename(files_moved))
+  
+  setwd(cwd) # Reset the working directory
   
   # Delete the recently moved files since they are now in a zip file
   file.remove(files_moved) 

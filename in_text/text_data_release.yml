@@ -646,9 +646,9 @@ entities:
     data-name: meteorological_inputs_NLDAS_{GROUP}.zip
     data-description: >- 
       A zip file containing CSVs of meteorological inputs aggregated to daily values from the North American Land Data Assimilation System (NLDAS) 
-      meteorological drivers. The value of {GROUP} can be 1 through 8, and the column `driver_nldas_zipfile` in `lake_metadata.csv` 
+      meteorological drivers. The value of {GROUP} can be 1 or 2, and the column `driver_nldas_zipfile` in `lake_metadata.csv` 
       reveals which zip file each lake's NLDAS driver data can be found. Groups were used only so that each NLDAS zip 
-      file was less than 10 GB. Files within the zip are named "NLDAS_time[0.379366]_x{x}_y{y}.csv" where the {x} and {y}
+      file was less than 10 GB. Files within the zip are named "NLDAS_x{x}_y{y}.csv" where the {x} and {y}
       locations are longitude and latitude indices from NLDAS of the individual meteological spatial data 
       cell (raw data are from Mitchell et al., 2004; data processing described in Read et al., 2021). The format of the data 
       is identical for each file. These meteorological files can be matched to the appropriate lake using the "driver_nldas_filepath" column
@@ -669,8 +669,8 @@ entities:
         Incoming radiant energy with wavelengths between ~300 and ~3000 nm, emitted by the 
         sun and reaching the lake surface after passing through the atmosphere, as a daily average.
       attr-defs: Read et al., 2021
-      data-min: 16.5142917
-      data-max: 361.2794167
+      data-min: 9.81
+      data-max: 404.9
       data-units: W m^-2
     - 
       attr-label: LongWave	
@@ -678,23 +678,23 @@ entities:
         Incoming thermal radiation at wavelengths > 3000 nm directed from the atmosphere to 
         the lake surface, as a daily average.
       attr-defs: Read et al., 2021
-      data-min: 132.0970847
-      data-max: 475.9529190
+      data-min: 100.1
+      data-max: 495.2
       data-units: W m^-2	
     - 
       attr-label: AirTemp	
       attr-def: >- 
         Air temperature above the surface of the lake, as a daily average.
       attr-defs: Read et al., 2021
-      data-min: -27.2049997
-      data-max: 37.2866735
+      data-min: -39.33
+      data-max: 38.83
       data-units: degrees C		
     - 
       attr-label: RelHum	
       attr-def: Relative humidity of the air above the surface of the lake, as a daily average.
       attr-defs: Read et al., 2021
-      data-min: 24.7956927
-      data-max: 97.4631846
+      data-min: 10.33
+      data-max: 106.0
       data-units: percent
     - 
       attr-label: WindSpeed	
@@ -702,8 +702,8 @@ entities:
         Speed of the wind above the lake, calculated to a daily number using the methods 
         described in Winslow et al., 2017.
       attr-defs: Read et al., 2021
-      data-min: 0.6168285
-      data-max: 12.4093538
+      data-min: 0.3556
+      data-max: 20.01
       data-units: m s^-1 	
     - 
       attr-label: Rain	
@@ -712,7 +712,7 @@ entities:
         Winslow et al. 2017; rate as determined by Hipsey et al. 2019.
       attr-defs: Read et al., 2021
       data-min: 0
-      data-max: 0.1619468
+      data-max: 0.2671
       data-units: m day^-1 	
     - 
       attr-label: Snow	
@@ -721,15 +721,16 @@ entities:
         Winslow et al. 2017. 
       attr-defs: Read et al., 2021
       data-min: 0
-      data-max: 0.7937960
+      data-max: 1.640
       data-units: m day^-1
   -
     data-name: meteorological_inputs_GCM.zip
     data-description: >- 
       A zip file containing NetCDF files of the Global Climate Model (GCM) meteorological drivers. Files 
       within the zip are named "GCM_{CLIMATE MODEL}.nc" where the {CLIMATE MODEL} field is one of ACCESS, 
-      CNRM, GFDL, IPSL, MIROC5, and MRI representing the six dynamically downscaled glibal climate models
-      used (Notaro et al., 2018). The format of the data is identical for each file. Data from these  
+      CNRM, GFDL, IPSL, MIROC5, and MRI representing the six dynamically downscaled global climate models
+      used (Notaro et al., 2018). The format of the data is identical for each file. Due to the resolution
+      of this data, there can be multiple lakes associated with a single cell. And so, data from these  
       meteorological files can be matched to the appropriate lake using the "driver_gcm_cell_no" column  
       in the "lake_metadata.csv" file of this data release and the "cell_no" attribute in the netCDFs.
     attributes:
@@ -741,7 +742,7 @@ entities:
       attr-defs: NA
       data-min: NA
       data-max: NA
-      data-units: Date
+      data-units: NA
     - 
       attr-label: cell_no
       attr-def: >-
@@ -2045,9 +2046,8 @@ process-description: >-
   Temperature profiles were predicted for 62966 lakes in the North American continent from 1979 to 2022. The EA-LSTM network used daily
   temperature observations from 7556 lakes. Inputs to the model were seven meteorological drivers derived from NLDAS (Mitchell et al., 2004) for the time period 1979-2022,
   and four static lake attributes: latitude, longitude, surface area, and lake elevation above sea level. The data aggregation methods used to 
-  assemble the temperature profile data and the lake attributes are described in Willard et al. 2022. This data release used these methods to
-  aggregate additional cooperator data. This data release also used full temperature profiles for each sampling date rather than only using surface
-  temperatures.
+  assemble the temperature profile data and the lake attributes are described in Willard et al. 2022; however, this data release included additional
+  cooperator data and used full temperature profiles for each sampling date rather than only using surface temperatures.
   
   To train the EA-LSTM, temperature observations were organized into 400-day sequences. Successive sequences overlapped by 200 days. The mean
   squared error of the temperature predictions was used as a loss function. Predictions made during the first 100 days were not included in the loss
