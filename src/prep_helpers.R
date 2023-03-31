@@ -331,7 +331,7 @@ prep_NLDAS_drivers <- function(ind_file, nldas_driver_info, driver_file_dir, tmp
 prep_GCM_drivers <- function(out_file, driver_file_dir, tmp_dir, gcm_driver_regex) {
   # The GCM drivers are coming from a targets repo, not scipiper so no need for `scipiper_freshen_files()`
   # This will need to be run on Tallgrass in order to have the most up-to-date data, though.
-  files_to_zip <- list.files(driver_file_dir, pattern = gcm_driver_regex, full.names = TRUE)[1:2]
+  files_to_zip <- list.files(driver_file_dir, pattern = gcm_driver_regex, full.names = TRUE)
   
   # Before zipping, move the files to the current directory (I got scared by a warning when I was testing
   # this on Tallgrass that said `Some paths reference parent directory, creating non-portable zip file`,
