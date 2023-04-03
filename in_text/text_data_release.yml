@@ -973,7 +973,9 @@ entities:
           date actually occurs in the previous year (e.g. ice-on for winter of 2017 happened
           in December of 2016). This definition of ice-on is consistent with the Wisconsin
           State Climatology Office's use of ice-on and ice-off dates by winter season. If
-          this value is `NA`, it means that no ice formed during that winter season.
+          this value is `NA`, it means that no ice formed during that winter season or that it
+          is the first year in the set and cannot be determined since we do not data for that
+          year's full winter season.
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
@@ -991,21 +993,26 @@ entities:
         attr-label: winter_dur_0_4
         attr-def: >-
           Number of days, beginning October 30 of the previous year and running through June
-          of the given year, that surface water is <4 degrees C
+          of the given year, that surface water is <4 degrees C. This is `NA` for the first
+          year of every dataset because we do not data for that year's full winter season.
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: days
       -
         attr-label: coef_var_31_60
-        attr-def: Coefficient of Variation of surface temperature from 30-60 days post ice off
+        attr-def: >- 
+          Coefficient of Variation of surface temperature from 30-60 days post ice off. If 
+          `ice_off_date` is `NA`, then this column will also be `NA`.
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: unitless (CV)
       -
         attr-label: coef_var_1_30
-        attr-def: Coefficient of Variation of surface temperature up to 30 days post ice-off
+        attr-def: >- 
+          Coefficient of Variation of surface temperature up to 30 days post ice-off. If 
+          `ice_off_date` is `NA`, then this column will also be `NA`.
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
@@ -1029,7 +1036,8 @@ entities:
         attr-def: >- 
           Average thermocline depth in stratified period that is >= 30 days. It
           uses the longest duration of stratified days as the stratified period and will
-          return NA for any stratified period less than 30 days.
+          return NA for any stratified period less than 30 days. NAs will also be 
+          returned if there is no thermocline found.
         attr-defs: Read et al., 2021 
         data-min: NA
         data-max: NA
@@ -1922,7 +1930,8 @@ entities:
       -
         attr-label: post_ice_warm_rate
         attr-def: >-
-          Average change in surface temp (degrees C per day) 30 days post ice off
+          Average change in surface temp (degrees C per day) 30 days post ice off.
+          This will be NA if there is no ice-off date.
         attr-defs: Busch et al., 1975; Madenijan et al., 1996
         data-min: NA
         data-max: NA
@@ -1932,42 +1941,58 @@ entities:
         attr-def: >-
           Date where average surface temperature reaches {temp} degrees C. {temp} is
           one of 8.9 (date of spawning temp), 16.7 (hatch date), 18 (date of spawning
-          temp for bass), or 21 (date of spawning temp for bass).
+          temp for bass), or 21 (date of spawning temp for bass). NA means that there
+          were no dates over that temperature for that year.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: Julian day
       -
         attr-label: SmetaTopD_mean
-        attr-def: Mean epilmnion meters during the longest stratified period
+        attr-def: >- 
+          Mean epilmnion meters during the longest stratified period. It uses the 
+          longest duration of stratified days as the stratified period and will
+          return NA for any stratified period less than 30 days.
         attr-defs: Read et al., 2011
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
       -
         attr-label: SmetaBotD_mean
-        attr-def: Mean hypolimnion meters during the longest stratified period
+        attr-def: >-
+          Mean hypolimnion meters during the longest stratified period. It uses the 
+          longest duration of stratified days as the stratified period and will
+          return NA for any stratified period less than 30 days.
         attr-defs: Read et al., 2011
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
       -
         attr-label: mean_epi_vol
-        attr-def: Mean epilmnion volume during longest stratified period
+        attr-def: >-
+          Mean epilmnion volume during longest stratified period. It uses the 
+          longest duration of stratified days as the stratified period and will
+          return NA for any stratified period less than 30 days.
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
       -
         attr-label: mean_hyp_vol
-        attr-def: Mean hypolimnion volume during longest stratified period
+        attr-def: >- 
+          Mean hypolimnion volume during longest stratified period. It uses the 
+          longest duration of stratified days as the stratified period and will
+          return NA for any stratified period less than 30 days.
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
       -
         attr-label: mean_epi_hypo_ratio
-        attr-def: Mean epilmnion volume divided by mean hypolimnion volume
+        attr-def: >- 
+          Mean epilmnion volume divided by mean hypolimnion volume. It uses the 
+          longest duration of stratified days as the stratified period and will
+          return NA for any stratified period less than 30 days.
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
