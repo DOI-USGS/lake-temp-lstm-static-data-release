@@ -21,7 +21,15 @@ abstract: >-
   the criteria to be included in all three modeling approaches, which results in different numbers of lakes 
   in the output (noted in the file descriptions below). The input data requirements for lakes to be included 
   in the EA-LSTM predictions are lake latitude, longitude, elevation, and surface area, plus NLDAS 
-  drivers at the lake's location. All 62,966 lakes included this data release met these requirements.
+  drivers at the lake's location. All 62,966 lakes included this data release met these requirements. The input
+  data requirements for lakes to be included in the contemporary GLM NLDAS-driven predictions are lake location 
+  (within one of the following 11 states: North Dakota, South Dakota, Iowa, Michigan, Indiana, Illinois, Wisconsin, 
+  Minnesota, Missouri, Arkansas, and Ohio), latitude, longitude, maximum depth (though more detailed hypsography 
+  was used where available), surface area, and a clarity esitmate, plus NLDAS drivers at the lake's location. 12,688 
+  lakes included this data release met these requirements. The input data requirements for lakes to be included in 
+  the future climate scenario GCM-driven predictions were the same as for the contemporary GLM predictions, except 
+  GCM drivers at the lake's location were required in place of NLDAS drivers. 11,715 lakes included this data release 
+  met these requirements.
   <br/>
   <br/>
   This data release includes the following files:</p>
