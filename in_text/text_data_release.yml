@@ -1110,6 +1110,97 @@ entities:
         data-max: NA
         data-units: degrees C
       -
+        attr-label: spring_days_in_10.5_15.5
+        attr-def: >-
+          Duration of optimal incubation period where surface temperature
+          is between 10.5-15.5 degrees C (Spring only)
+        attr-defs: Wismer and Christie, 1987
+        data-min: NA
+        data-max: NA
+        data-units: days before June 1
+      -
+        attr-label: post_ice_warm_rate
+        attr-def: >-
+          Average change in surface temp (degrees C per day) 30 days post ice off.
+          This will be NA if there is no ice-off date.
+        attr-defs: Busch et al., 1975; Madenijan et al., 1996
+        data-min: NA
+        data-max: NA
+        data-units: degrees C per day
+      -
+        attr-label: date_over_{temp}
+        attr-def: >-
+          Date where average surface temperature reaches {temp} degrees C. {temp} is
+          one of 8.9 (date of spawning temp), 16.7 (hatch date), 18 (date of spawning
+          temp for bass), or 21 (date of spawning temp for bass). NA means that there
+          were no dates over that temperature for that year.
+        attr-defs: Wismer and Christie, 1987
+        data-min: NA
+        data-max: NA
+        data-units: Julian day
+      -
+        attr-label: SmetaTopD_mean
+        attr-def: >- 
+          Mean epilmnion meters during the longest stratified period. It uses the 
+          longest duration of stratified days as the stratified period and will
+          return NA for any stratified period less than 30 days.
+        attr-defs: Read et al., 2011
+        data-min: NA
+        data-max: NA
+        data-units: linear distance (m)
+      -
+        attr-label: SmetaBotD_mean
+        attr-def: >-
+          Mean hypolimnion meters during the longest stratified period. It uses the 
+          longest duration of stratified days as the stratified period and will
+          return NA for any stratified period less than 30 days.
+        attr-defs: Read et al., 2011
+        data-min: NA
+        data-max: NA
+        data-units: linear distance (m)
+      -
+        attr-label: mean_epi_vol
+        attr-def: >-
+          Mean epilmnion volume during longest stratified period. It uses the 
+          longest duration of stratified days as the stratified period and will
+          return NA for any stratified period less than 30 days.
+        attr-defs: Read et al., 2021
+        data-min: NA
+        data-max: NA
+        data-units: volume (m^3*1000)
+      -
+        attr-label: mean_hyp_vol
+        attr-def: >- 
+          Mean hypolimnion volume during longest stratified period. It uses the 
+          longest duration of stratified days as the stratified period and will
+          return NA for any stratified period less than 30 days.
+        attr-defs: Read et al., 2021
+        data-min: NA
+        data-max: NA
+        data-units: volume (m^3*1000)
+      -
+        attr-label: mean_epi_hypo_ratio
+        attr-def: >- 
+          Mean epilmnion volume divided by mean hypolimnion volume. It uses the 
+          longest duration of stratified days as the stratified period and will
+          return NA for any stratified period less than 30 days.
+        attr-defs: Read et al., 2021
+        data-min: NA
+        data-max: NA
+        data-units: unitless (ratio)
+      -
+        attr-label: open_water_duration
+        attr-def: >-
+          Number of days between ice-off for this year's winter season and ice-on
+          for the next year's winter season. If `NA`, the open water period could
+          not be calculated because there was either not an ice-off date for this
+          year's winter season or an ice-on date for the next year's winter season
+          or both were missing.
+        attr-defs: Read et al., 2021
+        data-min: NA
+        data-max: NA
+        data-units: days
+      -
         attr-label: height_6.4_11.8
         attr-def: >-
           Annual sum of the daily water column height between 6.4 and 11.8 degrees C.
@@ -1915,97 +2006,6 @@ entities:
           Days in which there is any part of water column between 30 and 31 degrees C.
           This range is used to denote adult optimum
         attr-defs: Wismer and Christie, 1987
-        data-min: NA
-        data-max: NA
-        data-units: days
-      -
-        attr-label: spring_days_in_10.5_15.5
-        attr-def: >-
-          Duration of optimal incubation period where surface temperature
-          is between 10.5-15.5 degrees C (Spring only)
-        attr-defs: Wismer and Christie, 1987
-        data-min: NA
-        data-max: NA
-        data-units: days before June 1
-      -
-        attr-label: post_ice_warm_rate
-        attr-def: >-
-          Average change in surface temp (degrees C per day) 30 days post ice off.
-          This will be NA if there is no ice-off date.
-        attr-defs: Busch et al., 1975; Madenijan et al., 1996
-        data-min: NA
-        data-max: NA
-        data-units: degrees C per day
-      -
-        attr-label: date_over_{temp}
-        attr-def: >-
-          Date where average surface temperature reaches {temp} degrees C. {temp} is
-          one of 8.9 (date of spawning temp), 16.7 (hatch date), 18 (date of spawning
-          temp for bass), or 21 (date of spawning temp for bass). NA means that there
-          were no dates over that temperature for that year.
-        attr-defs: Wismer and Christie, 1987
-        data-min: NA
-        data-max: NA
-        data-units: Julian day
-      -
-        attr-label: SmetaTopD_mean
-        attr-def: >- 
-          Mean epilmnion meters during the longest stratified period. It uses the 
-          longest duration of stratified days as the stratified period and will
-          return NA for any stratified period less than 30 days.
-        attr-defs: Read et al., 2011
-        data-min: NA
-        data-max: NA
-        data-units: linear distance (m)
-      -
-        attr-label: SmetaBotD_mean
-        attr-def: >-
-          Mean hypolimnion meters during the longest stratified period. It uses the 
-          longest duration of stratified days as the stratified period and will
-          return NA for any stratified period less than 30 days.
-        attr-defs: Read et al., 2011
-        data-min: NA
-        data-max: NA
-        data-units: linear distance (m)
-      -
-        attr-label: mean_epi_vol
-        attr-def: >-
-          Mean epilmnion volume during longest stratified period. It uses the 
-          longest duration of stratified days as the stratified period and will
-          return NA for any stratified period less than 30 days.
-        attr-defs: Read et al., 2021
-        data-min: NA
-        data-max: NA
-        data-units: volume (m^3*1000)
-      -
-        attr-label: mean_hyp_vol
-        attr-def: >- 
-          Mean hypolimnion volume during longest stratified period. It uses the 
-          longest duration of stratified days as the stratified period and will
-          return NA for any stratified period less than 30 days.
-        attr-defs: Read et al., 2021
-        data-min: NA
-        data-max: NA
-        data-units: volume (m^3*1000)
-      -
-        attr-label: mean_epi_hypo_ratio
-        attr-def: >- 
-          Mean epilmnion volume divided by mean hypolimnion volume. It uses the 
-          longest duration of stratified days as the stratified period and will
-          return NA for any stratified period less than 30 days.
-        attr-defs: Read et al., 2021
-        data-min: NA
-        data-max: NA
-        data-units: unitless (ratio)
-      -
-        attr-label: open_water_duration
-        attr-def: >-
-          Number of days between ice-off for this year's winter season and ice-on
-          for the next year's winter season. If `NA`, the open water period could
-          not be calculated because there was either not an ice-off date for this
-          year's winter season or an ice-on date for the next year's winter season
-          or both were missing.
-        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: days
