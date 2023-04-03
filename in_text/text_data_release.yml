@@ -1055,7 +1055,8 @@ entities:
         attr-label: mean_{depth}_JulAugSep
         attr-def: >-
           Mean summer (July, August, September) temperature at {depth}. {depth} is
-          either "surf" for surface or "bot" for bottom.
+          either "surf" for surface or "bot" for bottom. The lake bottom is considered 
+          0.1 m from the max depth on that day.
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
@@ -1064,7 +1065,8 @@ entities:
         attr-label: max_{depth}_JulAugSep
         attr-def: >-
           Maximum summer (July, August, September) temperature at {depth}. {depth} is
-          either "surf" for surface or "bot" for bottom.
+          either "surf" for surface or "bot" for bottom. The lake bottom is considered 
+          0.1 m from the max depth on that day.
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
@@ -1073,7 +1075,8 @@ entities:
         attr-label: mean_{depth}_{month}
         attr-def: >-
           Mean temperature at {depth} for {month}. {depth} is either "surf" for
-          surface or "bot" for bottom. {month} is the 3 letter abbreviation for one
+          surface or "bot" for bottom. The lake bottom is considered 0.1 m from the max 
+          depth on that day. {month} is the 3 letter abbreviation for one
           of the 12 months, Jan through Dec.
         attr-defs: Read et al., 2021
         data-min: NA
@@ -1083,7 +1086,8 @@ entities:
         attr-label: max_{depth}_{month}
         attr-def: >-
           Maximum temperature at {depth} for {month}. {depth} is either "surf" for
-          surface or "bot" for bottom. {month} is the 3 letter abbreviation for one
+          surface or "bot" for bottom. The lake bottom is considered 0.1 m from the max 
+          depth on that day. {month} is the 3 letter abbreviation for one
           of the 12 months, Jan (January) through Dec (December).
         attr-defs: Read et al., 2021
         data-min: NA
