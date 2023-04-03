@@ -3,8 +3,13 @@
 # The vector returned here is used for filtering other targets. This can be used to identify
 # any vector of `site_id` values as long as that column exists in the `in_file`.
 prep_site_ids <- function(in_file, is_lstm = FALSE) {
-  in_data <- read_csv(in_file)
-  if(is_lstm) in_data <- filter(in_data, lstm_predictions)
+  if(is_lstm) {
+    in_data <- read_csv(in_file) %>% 
+      filter(lstm_predictions)
+  } else {
+    # Both files used for the GLM-NLDAS & GLM-GCM are feathers
+    in_data <- read_feather(in_file)
+  }
   site_ids <- unique(in_data$site_id)
   return(site_ids)
 }

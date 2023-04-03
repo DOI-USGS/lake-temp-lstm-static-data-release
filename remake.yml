@@ -25,9 +25,9 @@ targets:
   lstm_site_ids:
     command: prep_site_ids('../../lake-temp/lake-temperature-lstm-static/lake_metadata_lstm.csv', is_lstm = I(TRUE))
   glm_nldas_site_ids:
-    command: prep_site_ids('out_data/lake_temperature_metrics_GLM_NLDAS.csv')
+    command: prep_site_ids('out_data/lake_temperature_metrics_GLM_NLDAS.feather')
   glm_gcm_site_ids:
-    command: prep_site_ids('out_data/lake_temperature_metrics_GLM_GCM.csv')
+    command: prep_site_ids('out_data/lake_temperature_metrics_GLM_GCM.feather')
   
   nldas_zipfile_pattern:
     command: c(I('out_data/meteorological_inputs_NLDAS_%s.zip'))
