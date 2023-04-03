@@ -16,7 +16,12 @@ abstract: >-
   configurations) using the North American Land Data Assimilation System (NLDAS; Mitchell et al., 2004) as meteorological 
   drivers. In addition, GLM was used to generate lake temperature predictions under future climate scenarios 
   (covering 1981-2000, 2040-2059, and 2080-2099) using six dynamically downscaled Global Climate Models 
-  (GCM; Notaro et al., 2018) as meteorological drivers. The modeling frameworks and driver datasets have 
+  (GCM; Notaro et al., 2018) as meteorological drivers. Appropriate application of the six GCMs is dependent
+  on the use-case and will be up to the user to determine. For an example of a similar analysis in the Midwest
+  and Great Lakes region using 31 GCMs, see Byun and Hamlet, 2018.
+  <br/>
+  <br/>
+  The modeling frameworks and driver datasets have 
   slightly different footprints and input data requirements. This means that some of the lakes do not meet 
   the criteria to be included in all three modeling approaches, which results in different numbers of lakes 
   in the output (noted in the file descriptions below). The input data requirements for lakes to be included 
@@ -90,6 +95,14 @@ cross-cites:
     pubdate: 1975
     form: publication
     link: https://doi.org/10.1139/f75-207
+  -
+    authors: ['Kyuhyun Byun', 'Alan F. Hamlet']
+    title: >-
+      Projected changes in future climate over the Midwest and Great Lakes region 
+      using downscaled CMIP5 ensembles
+    pubdate: 2018
+    form: publication
+    link: https://doi.org/10.1002/joc.5388
   -
     authors: ['J.M. Casselman']
     title: >-
@@ -676,7 +689,7 @@ entities:
       attr-def: >- 
         Incoming radiant energy with wavelengths between ~300 and ~3000 nm, emitted by the 
         sun and reaching the lake surface after passing through the atmosphere, as a daily average.
-      attr-defs: Read et al., 2021
+      attr-defs: Winslow et al., 2017
       data-min: 9.81
       data-max: 404.9
       data-units: W m^-2
@@ -685,7 +698,7 @@ entities:
       attr-def: >-
         Incoming thermal radiation at wavelengths > 3000 nm directed from the atmosphere to 
         the lake surface, as a daily average.
-      attr-defs: Read et al., 2021
+      attr-defs: Winslow et al., 2017
       data-min: 100.1
       data-max: 495.2
       data-units: W m^-2	
@@ -693,14 +706,14 @@ entities:
       attr-label: AirTemp	
       attr-def: >- 
         Air temperature above the surface of the lake, as a daily average.
-      attr-defs: Read et al., 2021
+      attr-defs: Winslow et al., 2017
       data-min: -39.33
       data-max: 38.83
       data-units: degrees C		
     - 
       attr-label: RelHum	
       attr-def: Relative humidity of the air above the surface of the lake, as a daily average.
-      attr-defs: Read et al., 2021
+      attr-defs: Winslow et al., 2017
       data-min: 10.33
       data-max: 106.0
       data-units: percent
@@ -709,7 +722,7 @@ entities:
       attr-def: >- 
         Speed of the wind above the lake, calculated to a daily number using the methods 
         described in Winslow et al., 2017.
-      attr-defs: Read et al., 2021
+      attr-defs: Winslow et al., 2017
       data-min: 0.3556
       data-max: 20.01
       data-units: m s^-1 	
@@ -718,7 +731,7 @@ entities:
       attr-def: >-
         Daily rate of rain reaching the lake surface in a day as described in 
         Winslow et al. 2017; rate as determined by Hipsey et al. 2019.
-      attr-defs: Read et al., 2021
+      attr-defs: Winslow et al., 2017
       data-min: 0
       data-max: 0.2671
       data-units: m day^-1 	
@@ -727,7 +740,7 @@ entities:
       attr-def: >-
         Daily rate of snow reaching the lake surface in a day as described in 
         Winslow et al. 2017. 
-      attr-defs: Read et al., 2021
+      attr-defs: Winslow et al., 2017
       data-min: 0
       data-max: 1.640
       data-units: m day^-1
@@ -821,7 +834,7 @@ entities:
       attr-def: >-
         Daily rate of rain reaching the lake surface in a day as described in 
         Winslow et al. 2017. 
-      attr-defs: Read et al., 2021
+      attr-defs: Winslow et al. 2017
       data-min: NA
       data-max: NA
       data-units: m day^-1 	
@@ -830,7 +843,7 @@ entities:
       attr-def: >-
         Daily rate of snow reaching the lake surface in a day as described in 
         Winslow et al. 2017. 
-      attr-defs: Read et al., 2021
+      attr-defs: Winslow et al. 2017
       data-min: NA
       data-max: NA
       data-units: m day^-1
@@ -839,7 +852,7 @@ entities:
     data-description: >-
       This data release includes 9 zip files of lake temperature predictions. Each zip file contains NetCDF
       files of the lake temperature predictions, one NetCDF file per state. All the NetCDF files are organized
-      following DSG standards set in the R package, `ncdfgeom` (Blodgett, 2019).
+      following Discrete Sampling Geometries (DSG) standards set in the R package, `ncdfgeom` (Blodgett, 2019).
      
       Each zip contains NetCDF files with predictions for the same model-driver combination, and further subsets of
       the 3 main combinations (EALSTM-NLDAS, GLM-NLDAS, GLM-GCM) were made in order to keep each zip file under 10 GB.
