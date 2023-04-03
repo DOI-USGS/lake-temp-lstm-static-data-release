@@ -681,7 +681,7 @@ entities:
       attr-def: >- 
         Incoming radiant energy with wavelengths between ~300 and ~3000 nm, emitted by the 
         sun and reaching the lake surface after passing through the atmosphere, as a daily average.
-      attr-defs: Read et al., 2021
+      attr-defs: Winslow et al., 2017
       data-min: 9.81
       data-max: 404.9
       data-units: W m^-2
@@ -690,7 +690,7 @@ entities:
       attr-def: >-
         Incoming thermal radiation at wavelengths > 3000 nm directed from the atmosphere to 
         the lake surface, as a daily average.
-      attr-defs: Read et al., 2021
+      attr-defs: Winslow et al., 2017
       data-min: 100.1
       data-max: 495.2
       data-units: W m^-2	
@@ -698,14 +698,14 @@ entities:
       attr-label: AirTemp	
       attr-def: >- 
         Air temperature above the surface of the lake, as a daily average.
-      attr-defs: Read et al., 2021
+      attr-defs: Winslow et al., 2017
       data-min: -39.33
       data-max: 38.83
       data-units: degrees C		
     - 
       attr-label: RelHum	
       attr-def: Relative humidity of the air above the surface of the lake, as a daily average.
-      attr-defs: Read et al., 2021
+      attr-defs: Winslow et al., 2017
       data-min: 10.33
       data-max: 106.0
       data-units: percent
@@ -714,7 +714,7 @@ entities:
       attr-def: >- 
         Speed of the wind above the lake, calculated to a daily number using the methods 
         described in Winslow et al., 2017.
-      attr-defs: Read et al., 2021
+      attr-defs: Winslow et al., 2017
       data-min: 0.3556
       data-max: 20.01
       data-units: m s^-1 	
@@ -723,7 +723,7 @@ entities:
       attr-def: >-
         Daily rate of rain reaching the lake surface in a day as described in 
         Winslow et al. 2017; rate as determined by Hipsey et al. 2019.
-      attr-defs: Read et al., 2021
+      attr-defs: Winslow et al., 2017
       data-min: 0
       data-max: 0.2671
       data-units: m day^-1 	
@@ -732,7 +732,7 @@ entities:
       attr-def: >-
         Daily rate of snow reaching the lake surface in a day as described in 
         Winslow et al. 2017. 
-      attr-defs: Read et al., 2021
+      attr-defs: Winslow et al., 2017
       data-min: 0
       data-max: 1.640
       data-units: m day^-1
@@ -826,7 +826,7 @@ entities:
       attr-def: >-
         Daily rate of rain reaching the lake surface in a day as described in 
         Winslow et al. 2017. 
-      attr-defs: Read et al., 2021
+      attr-defs: Winslow et al. 2017
       data-min: NA
       data-max: NA
       data-units: m day^-1 	
@@ -835,7 +835,7 @@ entities:
       attr-def: >-
         Daily rate of snow reaching the lake surface in a day as described in 
         Winslow et al. 2017. 
-      attr-defs: Read et al., 2021
+      attr-defs: Winslow et al. 2017
       data-min: NA
       data-max: NA
       data-units: m day^-1
