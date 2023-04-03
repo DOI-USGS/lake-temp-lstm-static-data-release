@@ -16,7 +16,12 @@ abstract: >-
   configurations) using the North American Land Data Assimilation System (NLDAS; Mitchell et al., 2004) as meteorological 
   drivers. In addition, GLM was used to generate lake temperature predictions under future climate scenarios 
   (covering 1981-2000, 2040-2059, and 2080-2099) using six dynamically downscaled Global Climate Models 
-  (GCM; Notaro et al., 2018) as meteorological drivers. The modeling frameworks and driver datasets have 
+  (GCM; Notaro et al., 2018) as meteorological drivers. Appropriate application of the six GCMs is dependent
+  on the use-case and will be up to the user to determine. For an example of a similar analysis in the Midwest
+  and Great Lakes region using 31 GCMs, see Byun and Hamlet, 2018.
+  <br/>
+  <br/>
+  The modeling frameworks and driver datasets have 
   slightly different footprints and input data requirements. This means that some of the lakes do not meet 
   the criteria to be included in all three modeling approaches, which results in different numbers of lakes 
   in the output (noted in the file descriptions below). The input data requirements for lakes to be included 
@@ -82,6 +87,14 @@ cross-cites:
     pubdate: 1975
     form: publication
     link: https://doi.org/10.1139/f75-207
+  -
+    authors: ['Kyuhyun Byun', 'Alan F. Hamlet']
+    title: >-
+      Projected changes in future climate over the Midwest and Great Lakes region 
+      using downscaled CMIP5 ensembles
+    pubdate: 2018
+    form: publication
+    link: https://doi.org/10.1002/joc.5388
   -
     authors: ['J.M. Casselman']
     title: >-
