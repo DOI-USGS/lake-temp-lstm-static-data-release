@@ -831,7 +831,7 @@ entities:
     data-description: >-
       This data release includes 9 zip files of lake temperature predictions. Each zip file contains NetCDF
       files of the lake temperature predictions, one NetCDF file per state. All the NetCDF files are organized
-      following DSG standards set in the R package, `ncdfgeom` (Blodgett, 2019).
+      following Discrete Sampling Geometries (DSG) standards set in the R package, `ncdfgeom` (Blodgett, 2019).
      
       Each zip contains NetCDF files with predictions for the same model-driver combination, and further subsets of
       the 3 main combinations (EALSTM-NLDAS, GLM-NLDAS, GLM-GCM) were made in order to keep each zip file under 10 GB.
