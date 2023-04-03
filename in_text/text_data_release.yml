@@ -1096,7 +1096,7 @@ entities:
       -
         attr-label: height_6.4_11.8
         attr-def: >-
-          Meters of water between 6.4 and 11.8 degrees C.
+          Meters of the water column between 6.4 and 11.8 degrees C.
           This range is used to denote lower good-growth temperature (cold thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1105,7 +1105,7 @@ entities:
       -
         attr-label: vol_6.4_11.8
         attr-def: >-
-          Volume of water between 6.4 and 11.8 degrees C.
+          Volume of the waterbody between 6.4 and 11.8 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1122,7 +1122,7 @@ entities:
       -
         attr-label: height_13.2_18.2
         attr-def: >-
-          Meters of water between 13.2 and 18.2 degrees C.
+          Meters of the water column between 13.2 and 18.2 degrees C.
           This range is used to denote lower good-growth temperature (cool thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1131,7 +1131,7 @@ entities:
       -
         attr-label: vol_13.2_18.2
         attr-def: >-
-          Volume of water between 13.2 and 18.2 degrees C.
+          Volume of the waterbody between 13.2 and 18.2 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1148,7 +1148,7 @@ entities:
       -
         attr-label: height_17.7_22.5
         attr-def: >-
-          Meters of water between 17.7 and 22.5 degrees C.
+          Meters of the water column between 17.7 and 22.5 degrees C.
           This range is used to denote lower good-growth temperature (warm thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1157,7 +1157,7 @@ entities:
       -
         attr-label: vol_17.7_22.5
         attr-def: >-
-          Volume of water between 17.7 and 22.5 degrees C.
+          Volume of the waterbody between 17.7 and 22.5 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1174,7 +1174,7 @@ entities:
       -
         attr-label: height_11.5_18.7
         attr-def: >-
-          Meters of water between 11.5 and 18.7 degrees C.
+          Meters of the water column between 11.5 and 18.7 degrees C.
           This range is used to denote optimum temperature (cold thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1183,7 +1183,7 @@ entities:
       -
         attr-label: vol_11.5_18.7
         attr-def: >-
-          Volume of water between 11.5 and 18.7 degrees C.
+          Volume of the waterbody between 11.5 and 18.7 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1200,7 +1200,7 @@ entities:
       -
         attr-label: height_24_25.7
         attr-def: >-
-          Meters of water between 24 and 25.7 degrees C.
+          Meters of the water column between 24 and 25.7 degrees C.
           This range is used to denote optimum temperature (cool thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1209,7 +1209,7 @@ entities:
       -
         attr-label: vol_24_25.7
         attr-def: >-
-          Volume of water between 24 and 25.7 degrees C.
+          Volume of the waterbody between 24 and 25.7 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1226,7 +1226,7 @@ entities:
       -
         attr-label: height_27_32
         attr-def: >-
-          Meters of water between 27 and 32 degrees C.
+          Meters of the water column between 27 and 32 degrees C.
           This range is used to denote optimum temperature (warm thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1235,7 +1235,7 @@ entities:
       -
         attr-label: vol_27_32
         attr-def: >-
-          Volume of water between 27 and 32 degrees C.
+          Volume of the waterbody between 27 and 32 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1252,7 +1252,7 @@ entities:
       -
         attr-label: height_15.5_21.2
         attr-def: >-
-          Meters of water between 15.5 and 21.2 degrees C.
+          Meters of the water column between 15.5 and 21.2 degrees C.
           This range is used to denote upper good growth temperature (cold thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1261,7 +1261,7 @@ entities:
       -
         attr-label: vol_15.5_21.2
         attr-def: >-
-          Volume of water between 15.5 and 21.2 degrees C.
+          Volume of the waterbody between 15.5 and 21.2 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1278,7 +1278,7 @@ entities:
       -
         attr-label: height_27.7_28.8
         attr-def: >-
-          Meters of water between 27.7 and 28.8 degrees C.
+          Meters of the water column between 27.7 and 28.8 degrees C.
           This range is used to denote upper good growth temperature (cool thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1287,7 +1287,7 @@ entities:
       -
         attr-label: vol_27.7_28.8
         attr-def: >-
-          Volume of water between 27.7 and 28.8 degrees C.
+          Volume of the waterbody between 27.7 and 28.8 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1304,7 +1304,7 @@ entities:
       -
         attr-label: height_31.3_34.7
         attr-def: >-
-          Meters of water between 31.3 and 34.7 degrees C.
+          Meters of the water column between 31.3 and 34.7 degrees C.
           This range is used to denote upper good growth temperature (warm thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1313,7 +1313,7 @@ entities:
       -
         attr-label: vol_31.3_34.7
         attr-def: >-
-          Volume of water between 31.3 and 34.7 degrees C.
+          Volume of the waterbody between 31.3 and 34.7 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1330,7 +1330,7 @@ entities:
       -
         attr-label: height_26.6_100
         attr-def: >-
-          Meters of water between 26.6 and 100 degrees C.
+          Meters of the water column between 26.6 and 100 degrees C.
           This range is used to denote upper lethal temperature (cold thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1339,7 +1339,7 @@ entities:
       -
         attr-label: vol_26.6_100
         attr-def: >-
-          Volume of water between 26.6 and 100 degrees C.
+          Volume of the waterbody between 26.6 and 100 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1356,7 +1356,7 @@ entities:
       -
         attr-label: height_32.3_100
         attr-def: >-
-          Meters of water between 32.3 and 100 degrees C.
+          Meters of the water column between 32.3 and 100 degrees C.
           This range is used to denote upper lethal temperature (cool thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1365,7 +1365,7 @@ entities:
       -
         attr-label: vol_32.3_100
         attr-def: >-
-          Volume of water between 32.3 and 100 degrees C.
+          Volume of the waterbody between 32.3 and 100 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1382,7 +1382,7 @@ entities:
       -
         attr-label: height_36_100
         attr-def: >-
-          Meters of water between 36 and 100 degrees C.
+          Meters of the water column between 36 and 100 degrees C.
           This range is used to denote upper lethal temperature (warm thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1391,7 +1391,7 @@ entities:
       -
         attr-label: vol_36_100
         attr-def: >-
-          Volume of water between 36 and 100 degrees C.
+          Volume of the waterbody between 36 and 100 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1408,7 +1408,7 @@ entities:
       -
         attr-label: height_12_28
         attr-def: >-
-          Meters of water between 12 and 28 degrees C.
+          Meters of the water column between 12 and 28 degrees C.
           This range is used to denote optimal age 0 thermal habitat
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1417,7 +1417,7 @@ entities:
       -
         attr-label: vol_12_28
         attr-def: >-
-          Volume of water between 12 and 28 degrees C.
+          Volume of the waterbody between 12 and 28 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1434,7 +1434,7 @@ entities:
       -
         attr-label: height_10.6_11.2
         attr-def: >-
-          Meters of water between 10.6 and 11.2 degrees C.
+          Meters of the water column between 10.6 and 11.2 degrees C.
           This range is used to denote optimal larval thermal habitat
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1443,7 +1443,7 @@ entities:
       -
         attr-label: vol_10.6_11.2
         attr-def: >-
-          Volume of water between 10.6 and 11.2 degrees C.
+          Volume of the waterbody between 10.6 and 11.2 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1460,7 +1460,7 @@ entities:
       -
         attr-label: height_18.2_28.2
         attr-def: >-
-          Meters of water between 18.2 and 28.2 degrees C.
+          Meters of the water column between 18.2 and 28.2 degrees C.
           This range is used to denote good growth habitat
         attr-defs: Fang et al., 2004
         data-min: NA
@@ -1469,7 +1469,7 @@ entities:
       -
         attr-label: vol_18.2_28.2
         attr-def: >-
-          Volume of water between 18.2 and 28.2 degrees C.
+          Volume of the waterbody between 18.2 and 28.2 degrees C.
         attr-defs: Fang et al., 2004
         data-min: NA
         data-max: NA
@@ -1486,7 +1486,7 @@ entities:
       -
         attr-label: height_18_22
         attr-def: >-
-          Meters of water between 18 and 22 degrees C.
+          Meters of the water column between 18 and 22 degrees C.
           This range is used to denote optimal age 0 thermal habitat
         attr-defs: Christie and Regier, 1988
         data-min: NA
@@ -1495,7 +1495,7 @@ entities:
       -
         attr-label: vol_18_22
         attr-def: >-
-          Volume of water between 18 and 22 degrees C.
+          Volume of the waterbody between 18 and 22 degrees C.
         attr-defs: Christie and Regier, 1988
         data-min: NA
         data-max: NA
@@ -1512,7 +1512,7 @@ entities:
       -
         attr-label: height_19.3_23.3
         attr-def: >-
-          Meters of water between 19.3 and 23.3 degrees C.
+          Meters of the water column between 19.3 and 23.3 degrees C.
           This range is used to denote YOY optimum
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1521,7 +1521,7 @@ entities:
       -
         attr-label: vol_19.3_23.3
         attr-def: >-
-          Volume of water between 19.3 and 23.3 degrees C.
+          Volume of the waterbody between 19.3 and 23.3 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1538,7 +1538,7 @@ entities:
       -
         attr-label: height_19_23
         attr-def: >-
-          Meters of water between 19 and 23 degrees C.
+          Meters of the water column between 19 and 23 degrees C.
           This range is used to denote optimal thermal habitat
         attr-defs: Cline et al., 2013
         data-min: NA
@@ -1547,7 +1547,7 @@ entities:
       -
         attr-label: vol_19_23
         attr-def: >-
-          Volume of water between 19 and 23 degrees C.
+          Volume of the waterbody between 19 and 23 degrees C.
         attr-defs: Cline et al., 2013
         data-min: NA
         data-max: NA
@@ -1564,7 +1564,7 @@ entities:
       -
         attr-label: height_20.6_23.2
         attr-def: >-
-          Meters of water between 20.6 and 23.2 degrees C.
+          Meters of the water column between 20.6 and 23.2 degrees C.
           This range is used to denote optimal thermal habitat
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1573,7 +1573,7 @@ entities:
       -
         attr-label: vol_20.6_23.2
         attr-def: >-
-          Volume of water between 20.6 and 23.2 degrees C.
+          Volume of the waterbody between 20.6 and 23.2 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1590,7 +1590,7 @@ entities:
       -
         attr-label: height_20_30
         attr-def: >-
-          Meters of water between 20 and 30 degrees C.
+          Meters of the water column between 20 and 30 degrees C.
           This range is used to denote larval optimum
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1599,7 +1599,7 @@ entities:
       -
         attr-label: vol_20_30
         attr-def: >-
-          Volume of water between 20 and 30 degrees C.
+          Volume of the waterbody between 20 and 30 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1616,7 +1616,7 @@ entities:
       -
         attr-label: height_21_100
         attr-def: >-
-          Meters of water between 21 and 100 degrees C.
+          Meters of the water column between 21 and 100 degrees C.
           This range is used to denote growing season for YOY
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1625,7 +1625,7 @@ entities:
       -
         attr-label: vol_21_100
         attr-def: >-
-          Volume of water between 21 and 100 degrees C.
+          Volume of the waterbody between 21 and 100 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1642,7 +1642,7 @@ entities:
       -
         attr-label: height_22_23
         attr-def: >-
-          Meters of water between 22 and 23 degrees C.
+          Meters of the water column between 22 and 23 degrees C.
           This range is used to denote optimal thermal habitat
         attr-defs: Casselman, 2002
         data-min: NA
@@ -1651,7 +1651,7 @@ entities:
       -
         attr-label: vol_22_23
         attr-def: >-
-          Volume of water between 22 and 23 degrees C.
+          Volume of the waterbody between 22 and 23 degrees C.
         attr-defs: Casselman, 2002
         data-min: NA
         data-max: NA
@@ -1668,7 +1668,7 @@ entities:
       -
         attr-label: height_23_31
         attr-def: >-
-          Meters of water between 23 and 31 degrees C.
+          Meters of the water column between 23 and 31 degrees C.
           This range is used to denote juvenile optimum
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1677,7 +1677,7 @@ entities:
       -
         attr-label: vol_23_31
         attr-def: >-
-          Volume of water between 23 and 31 degrees C.
+          Volume of the waterbody between 23 and 31 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1694,7 +1694,7 @@ entities:
       -
         attr-label: height_25_29
         attr-def: >-
-          Meters of water between 25 and 29 degrees C.
+          Meters of the water column between 25 and 29 degrees C.
           This range is used to denote larval optimum
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1703,7 +1703,7 @@ entities:
       -
         attr-label: vol_25_29
         attr-def: >-
-          Volume of water between 25 and 29 degrees C.
+          Volume of the waterbody between 25 and 29 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1720,7 +1720,7 @@ entities:
       -
         attr-label: height_26.2_32
         attr-def: >-
-          Meters of water between 26.2 and 32 degrees C.
+          Meters of the water column between 26.2 and 32 degrees C.
           This range is used to denote good growth habitat
         attr-defs: Countant, 1977
         data-min: NA
@@ -1729,7 +1729,7 @@ entities:
       -
         attr-label: vol_26.2_32
         attr-def: >-
-          Volume of water between 26.2 and 32 degrees C.
+          Volume of the waterbody between 26.2 and 32 degrees C.
         attr-defs: Countant, 1977
         data-min: NA
         data-max: NA
@@ -1746,7 +1746,7 @@ entities:
       -
         attr-label: height_26_28
         attr-def: >-
-          Meters of water between 26 and 28 degrees C.
+          Meters of the water column between 26 and 28 degrees C.
           This range is used to denote subadult optimum
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1755,7 +1755,7 @@ entities:
       -
         attr-label: vol_26_28
         attr-def: >-
-          Volume of water between 26 and 28 degrees C.
+          Volume of the waterbody between 26 and 28 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1772,7 +1772,7 @@ entities:
       -
         attr-label: height_26_30
         attr-def: >-
-          Meters of water between 26 and 30 degrees C.
+          Meters of the water column between 26 and 30 degrees C.
           This range is used to denote adult optimum
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1781,7 +1781,7 @@ entities:
       -
         attr-label: vol_26_30
         attr-def: >-
-          Volume of water between 26 and 30 degrees C.
+          Volume of the waterbody between 26 and 30 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1798,7 +1798,7 @@ entities:
       -
         attr-label: height_28_29
         attr-def: >-
-          Meters of water between 28 and 29 degrees C.
+          Meters of the water column between 28 and 29 degrees C.
           This range is used to denote juvenile optimum
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1807,7 +1807,7 @@ entities:
       -
         attr-label: vol_28_29
         attr-def: >-
-          Volume of water between 28 and 29 degrees C.
+          Volume of the waterbody between 28 and 29 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1825,7 +1825,7 @@ entities:
       -
         attr-label: height_28_32
         attr-def: >-
-          Meters of water between 28 and 32 degrees C.
+          Meters of the water column between 28 and 32 degrees C.
           This range is used to denote juvenile optimum
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1834,7 +1834,7 @@ entities:
       -
         attr-label: vol_28_32
         attr-def: >-
-          Volume of water between 28 and 32 degrees C.
+          Volume of the waterbody between 28 and 32 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1852,7 +1852,7 @@ entities:
       -
         attr-label: height_29_100
         attr-def: >-
-          Meters of water between 29 and 100 degrees C.
+          Meters of the water column between 29 and 100 degrees C.
           This range is used to denote lethal habitat
         attr-defs: Fang et al., 2004
         data-min: NA
@@ -1861,7 +1861,7 @@ entities:
       -
         attr-label: vol_29_100
         attr-def: >-
-          Volume of water between 29 and 100 degrees C.
+          Volume of the waterbody between 29 and 100 degrees C.
         attr-defs: Fang et al., 2004
         data-min: NA
         data-max: NA
@@ -1879,7 +1879,7 @@ entities:
       -
         attr-label: height_30_31
         attr-def: >-
-          Meters of water between 30 and 31 degrees C.
+          Meters of the water column between 30 and 31 degrees C.
           This range is used to denote adult optimum
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1888,7 +1888,7 @@ entities:
       -
         attr-label: vol_30_31
         attr-def: >-
-          Volume of water between 30 and 31 degrees C.
+          Volume of the waterbody between 30 and 31 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
