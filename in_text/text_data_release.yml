@@ -231,7 +231,7 @@ cross-cites:
     link: http://www.glfc.org/pubs/SpecialPubs/Sp87_3.pdf
 
 process-date: !expr format(Sys.time(),'%Y%m%d')
-file-format: Five comma-delimited files, one zipped shapefile, nine zip files containing comma-delimited files, ten zip files containing netCDF files, two R scripts, and a single PNG file
+file-format: Three comma-delimited files, two feather files, one zipped shapefile, nine zip files containing comma-delimited files, ten zip files containing netCDF files, two R scripts, and a single PNG file
 
 entities:
   -
