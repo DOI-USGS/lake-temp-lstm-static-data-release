@@ -1139,6 +1139,16 @@ entities:
         data-max: NA
         data-units: Julian day
       -
+        attr-label: date_below_5
+        attr-def: >-
+          First date following the peak temperature date where the average surface 
+          temperature drops below 5 degrees C. NA means that there were no dates 
+          under 5 degrees C following the peak temperature for that year.
+        attr-defs: Wismer and Christie, 1987
+        data-min: NA
+        data-max: NA
+        data-units: Julian day
+      -
         attr-label: SmetaTopD_mean
         attr-def: >- 
           Mean epilmnion meters during the longest stratified period. It uses the 
