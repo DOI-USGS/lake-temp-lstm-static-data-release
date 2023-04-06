@@ -973,7 +973,9 @@ entities:
           date actually occurs in the previous year (e.g. ice-on for winter of 2017 happened
           in December of 2016). This definition of ice-on is consistent with the Wisconsin
           State Climatology Office's use of ice-on and ice-off dates by winter season. If
-          this value is `NA`, it means that no ice formed during that winter season.
+          this value is `NA`, it means that no ice formed during that winter season or that it
+          is the first year in the set and cannot be determined since we do not data for that
+          year's full winter season.
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
@@ -991,21 +993,26 @@ entities:
         attr-label: winter_dur_0_4
         attr-def: >-
           Number of days, beginning October 30 of the previous year and running through June
-          of the given year, that surface water is <4 degrees C
+          of the given year, that surface water is <4 degrees C. This is `NA` for the first
+          year of every dataset because we do not data for that year's full winter season.
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: days
       -
         attr-label: coef_var_31_60
-        attr-def: Coefficient of Variation of surface temperature from 30-60 days post ice off
+        attr-def: >- 
+          Coefficient of Variation of surface temperature from 30-60 days post ice off. If 
+          `ice_off_date` is `NA`, then this column will also be `NA`.
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: unitless (CV)
       -
         attr-label: coef_var_1_30
-        attr-def: Coefficient of Variation of surface temperature up to 30 days post ice-off
+        attr-def: >- 
+          Coefficient of Variation of surface temperature up to 30 days post ice-off. If 
+          `ice_off_date` is `NA`, then this column will also be `NA`.
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
@@ -1029,7 +1036,8 @@ entities:
         attr-def: >- 
           Average thermocline depth in stratified period that is >= 30 days. It
           uses the longest duration of stratified days as the stratified period and will
-          return NA for any stratified period less than 30 days.
+          return NA for any stratified period less than 30 days. NAs will also be 
+          returned if there is no thermocline found.
         attr-defs: Read et al., 2021 
         data-min: NA
         data-max: NA
@@ -1063,7 +1071,8 @@ entities:
         attr-label: mean_{depth}_JulAugSep
         attr-def: >-
           Mean summer (July, August, September) temperature at {depth}. {depth} is
-          either "surf" for surface or "bot" for bottom.
+          either "surf" for surface or "bot" for bottom. The lake bottom is considered 
+          0.1 m from the max depth on that day.
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
@@ -1072,7 +1081,8 @@ entities:
         attr-label: max_{depth}_JulAugSep
         attr-def: >-
           Maximum summer (July, August, September) temperature at {depth}. {depth} is
-          either "surf" for surface or "bot" for bottom.
+          either "surf" for surface or "bot" for bottom. The lake bottom is considered 
+          0.1 m from the max depth on that day.
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
@@ -1081,7 +1091,8 @@ entities:
         attr-label: mean_{depth}_{month}
         attr-def: >-
           Mean temperature at {depth} for {month}. {depth} is either "surf" for
-          surface or "bot" for bottom. {month} is the 3 letter abbreviation for one
+          surface or "bot" for bottom. The lake bottom is considered 0.1 m from the max 
+          depth on that day. {month} is the 3 letter abbreviation for one
           of the 12 months, Jan through Dec.
         attr-defs: Read et al., 2021
         data-min: NA
@@ -1091,16 +1102,118 @@ entities:
         attr-label: max_{depth}_{month}
         attr-def: >-
           Maximum temperature at {depth} for {month}. {depth} is either "surf" for
-          surface or "bot" for bottom. {month} is the 3 letter abbreviation for one
+          surface or "bot" for bottom. The lake bottom is considered 0.1 m from the max 
+          depth on that day. {month} is the 3 letter abbreviation for one
           of the 12 months, Jan (January) through Dec (December).
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: degrees C
       -
+        attr-label: spring_days_in_10.5_15.5
+        attr-def: >-
+          Duration of optimal incubation period where surface temperature
+          is between 10.5-15.5 degrees C (Spring only)
+        attr-defs: Wismer and Christie, 1987
+        data-min: NA
+        data-max: NA
+        data-units: days before June 1
+      -
+        attr-label: post_ice_warm_rate
+        attr-def: >-
+          Average change in surface temp (degrees C per day) 30 days post ice off.
+          This will be NA if there is no ice-off date.
+        attr-defs: Busch et al., 1975; Madenijan et al., 1996
+        data-min: NA
+        data-max: NA
+        data-units: degrees C per day
+      -
+        attr-label: date_over_{temp}
+        attr-def: >-
+          Date where average surface temperature reaches {temp} degrees C. {temp} is
+          one of 8.9 (date of spawning temp), 16.7 (hatch date), 18 (date of spawning
+          temp for bass), or 21 (date of spawning temp for bass). NA means that there
+          were no dates over that temperature for that year.
+        attr-defs: Wismer and Christie, 1987
+        data-min: NA
+        data-max: NA
+        data-units: Julian day
+      -
+        attr-label: date_below_5
+        attr-def: >-
+          First date following the peak temperature date where the average surface 
+          temperature drops below 5 degrees C. NA means that there were no dates 
+          under 5 degrees C following the peak temperature for that year.
+        attr-defs: Wismer and Christie, 1987
+        data-min: NA
+        data-max: NA
+        data-units: Julian day
+      -
+        attr-label: SmetaTopD_mean
+        attr-def: >- 
+          Mean epilmnion meters during the longest stratified period. It uses the 
+          longest duration of stratified days as the stratified period and will
+          return NA for any stratified period less than 30 days.
+        attr-defs: Read et al., 2011
+        data-min: NA
+        data-max: NA
+        data-units: linear distance (m)
+      -
+        attr-label: SmetaBotD_mean
+        attr-def: >-
+          Mean hypolimnion meters during the longest stratified period. It uses the 
+          longest duration of stratified days as the stratified period and will
+          return NA for any stratified period less than 30 days.
+        attr-defs: Read et al., 2011
+        data-min: NA
+        data-max: NA
+        data-units: linear distance (m)
+      -
+        attr-label: mean_epi_vol
+        attr-def: >-
+          Mean epilmnion volume during longest stratified period. It uses the 
+          longest duration of stratified days as the stratified period and will
+          return NA for any stratified period less than 30 days.
+        attr-defs: Read et al., 2021
+        data-min: NA
+        data-max: NA
+        data-units: volume (m^3*1000)
+      -
+        attr-label: mean_hyp_vol
+        attr-def: >- 
+          Mean hypolimnion volume during longest stratified period. It uses the 
+          longest duration of stratified days as the stratified period and will
+          return NA for any stratified period less than 30 days.
+        attr-defs: Read et al., 2021
+        data-min: NA
+        data-max: NA
+        data-units: volume (m^3*1000)
+      -
+        attr-label: mean_epi_hypo_ratio
+        attr-def: >- 
+          Mean epilmnion volume divided by mean hypolimnion volume. It uses the 
+          longest duration of stratified days as the stratified period and will
+          return NA for any stratified period less than 30 days.
+        attr-defs: Read et al., 2021
+        data-min: NA
+        data-max: NA
+        data-units: unitless (ratio)
+      -
+        attr-label: open_water_duration
+        attr-def: >-
+          Number of days between ice-off for this year's winter season and ice-on
+          for the next year's winter season. If `NA`, the open water period could
+          not be calculated because there was either not an ice-off date for this
+          year's winter season or an ice-on date for the next year's winter season
+          or both were missing.
+        attr-defs: Read et al., 2021
+        data-min: NA
+        data-max: NA
+        data-units: days
+      -
         attr-label: height_6.4_11.8
         attr-def: >-
-          Meters of water between 6.4 and 11.8 degrees C.
+          Annual sum of the daily water column height between 6.4 and 11.8 degrees C.
           This range is used to denote lower good-growth temperature (cold thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1109,7 +1222,7 @@ entities:
       -
         attr-label: vol_6.4_11.8
         attr-def: >-
-          Volume of water between 6.4 and 11.8 degrees C.
+          Annual sum of the daily waterbody volume between 6.4 and 11.8 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1126,7 +1239,7 @@ entities:
       -
         attr-label: height_13.2_18.2
         attr-def: >-
-          Meters of water between 13.2 and 18.2 degrees C.
+          Annual sum of the daily water column height between 13.2 and 18.2 degrees C.
           This range is used to denote lower good-growth temperature (cool thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1135,7 +1248,7 @@ entities:
       -
         attr-label: vol_13.2_18.2
         attr-def: >-
-          Volume of water between 13.2 and 18.2 degrees C.
+          Annual sum of the daily waterbody volume between 13.2 and 18.2 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1152,7 +1265,7 @@ entities:
       -
         attr-label: height_17.7_22.5
         attr-def: >-
-          Meters of water between 17.7 and 22.5 degrees C.
+          Annual sum of the daily water column height between 17.7 and 22.5 degrees C.
           This range is used to denote lower good-growth temperature (warm thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1161,7 +1274,7 @@ entities:
       -
         attr-label: vol_17.7_22.5
         attr-def: >-
-          Volume of water between 17.7 and 22.5 degrees C.
+          Annual sum of the daily waterbody volume between 17.7 and 22.5 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1178,7 +1291,7 @@ entities:
       -
         attr-label: height_11.5_18.7
         attr-def: >-
-          Meters of water between 11.5 and 18.7 degrees C.
+          Annual sum of the daily water column height between 11.5 and 18.7 degrees C.
           This range is used to denote optimum temperature (cold thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1187,7 +1300,7 @@ entities:
       -
         attr-label: vol_11.5_18.7
         attr-def: >-
-          Volume of water between 11.5 and 18.7 degrees C.
+          Annual sum of the daily waterbody volume between 11.5 and 18.7 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1204,7 +1317,7 @@ entities:
       -
         attr-label: height_24_25.7
         attr-def: >-
-          Meters of water between 24 and 25.7 degrees C.
+          Annual sum of the daily water column height between 24 and 25.7 degrees C.
           This range is used to denote optimum temperature (cool thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1213,7 +1326,7 @@ entities:
       -
         attr-label: vol_24_25.7
         attr-def: >-
-          Volume of water between 24 and 25.7 degrees C.
+          Annual sum of the daily waterbody volume between 24 and 25.7 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1230,7 +1343,7 @@ entities:
       -
         attr-label: height_27_32
         attr-def: >-
-          Meters of water between 27 and 32 degrees C.
+          Annual sum of the daily water column height between 27 and 32 degrees C.
           This range is used to denote optimum temperature (warm thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1239,7 +1352,7 @@ entities:
       -
         attr-label: vol_27_32
         attr-def: >-
-          Volume of water between 27 and 32 degrees C.
+          Annual sum of the daily waterbody volume between 27 and 32 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1256,7 +1369,7 @@ entities:
       -
         attr-label: height_15.5_21.2
         attr-def: >-
-          Meters of water between 15.5 and 21.2 degrees C.
+          Annual sum of the daily water column height between 15.5 and 21.2 degrees C.
           This range is used to denote upper good growth temperature (cold thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1265,7 +1378,7 @@ entities:
       -
         attr-label: vol_15.5_21.2
         attr-def: >-
-          Volume of water between 15.5 and 21.2 degrees C.
+          Annual sum of the daily waterbody volume between 15.5 and 21.2 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1282,7 +1395,7 @@ entities:
       -
         attr-label: height_27.7_28.8
         attr-def: >-
-          Meters of water between 27.7 and 28.8 degrees C.
+          Annual sum of the daily water column height between 27.7 and 28.8 degrees C.
           This range is used to denote upper good growth temperature (cool thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1291,7 +1404,7 @@ entities:
       -
         attr-label: vol_27.7_28.8
         attr-def: >-
-          Volume of water between 27.7 and 28.8 degrees C.
+          Annual sum of the daily waterbody volume between 27.7 and 28.8 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1308,7 +1421,7 @@ entities:
       -
         attr-label: height_31.3_34.7
         attr-def: >-
-          Meters of water between 31.3 and 34.7 degrees C.
+          Annual sum of the daily water column height between 31.3 and 34.7 degrees C.
           This range is used to denote upper good growth temperature (warm thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1317,7 +1430,7 @@ entities:
       -
         attr-label: vol_31.3_34.7
         attr-def: >-
-          Volume of water between 31.3 and 34.7 degrees C.
+          Annual sum of the daily waterbody volume between 31.3 and 34.7 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1334,7 +1447,7 @@ entities:
       -
         attr-label: height_26.6_100
         attr-def: >-
-          Meters of water between 26.6 and 100 degrees C.
+          Annual sum of the daily water column height between 26.6 and 100 degrees C.
           This range is used to denote upper lethal temperature (cold thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1343,7 +1456,7 @@ entities:
       -
         attr-label: vol_26.6_100
         attr-def: >-
-          Volume of water between 26.6 and 100 degrees C.
+          Annual sum of the daily waterbody volume between 26.6 and 100 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1360,7 +1473,7 @@ entities:
       -
         attr-label: height_32.3_100
         attr-def: >-
-          Meters of water between 32.3 and 100 degrees C.
+          Annual sum of the daily water column height between 32.3 and 100 degrees C.
           This range is used to denote upper lethal temperature (cool thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1369,7 +1482,7 @@ entities:
       -
         attr-label: vol_32.3_100
         attr-def: >-
-          Volume of water between 32.3 and 100 degrees C.
+          Annual sum of the daily waterbody volume between 32.3 and 100 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1386,7 +1499,7 @@ entities:
       -
         attr-label: height_36_100
         attr-def: >-
-          Meters of water between 36 and 100 degrees C.
+          Annual sum of the daily water column height between 36 and 100 degrees C.
           This range is used to denote upper lethal temperature (warm thermal guild)
         attr-defs: Eaton et al., 1995
         data-min: NA
@@ -1395,7 +1508,7 @@ entities:
       -
         attr-label: vol_36_100
         attr-def: >-
-          Volume of water between 36 and 100 degrees C.
+          Annual sum of the daily waterbody volume between 36 and 100 degrees C.
         attr-defs: Eaton et al., 1995
         data-min: NA
         data-max: NA
@@ -1412,7 +1525,7 @@ entities:
       -
         attr-label: height_12_28
         attr-def: >-
-          Meters of water between 12 and 28 degrees C.
+          Annual sum of the daily water column height between 12 and 28 degrees C.
           This range is used to denote optimal age 0 thermal habitat
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1421,7 +1534,7 @@ entities:
       -
         attr-label: vol_12_28
         attr-def: >-
-          Volume of water between 12 and 28 degrees C.
+          Annual sum of the daily waterbody volume between 12 and 28 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1438,7 +1551,7 @@ entities:
       -
         attr-label: height_10.6_11.2
         attr-def: >-
-          Meters of water between 10.6 and 11.2 degrees C.
+          Annual sum of the daily water column height between 10.6 and 11.2 degrees C.
           This range is used to denote optimal larval thermal habitat
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1447,7 +1560,7 @@ entities:
       -
         attr-label: vol_10.6_11.2
         attr-def: >-
-          Volume of water between 10.6 and 11.2 degrees C.
+          Annual sum of the daily waterbody volume between 10.6 and 11.2 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1464,7 +1577,7 @@ entities:
       -
         attr-label: height_18.2_28.2
         attr-def: >-
-          Meters of water between 18.2 and 28.2 degrees C.
+          Annual sum of the daily water column height between 18.2 and 28.2 degrees C.
           This range is used to denote good growth habitat
         attr-defs: Fang et al., 2004
         data-min: NA
@@ -1473,7 +1586,7 @@ entities:
       -
         attr-label: vol_18.2_28.2
         attr-def: >-
-          Volume of water between 18.2 and 28.2 degrees C.
+          Annual sum of the daily waterbody volume between 18.2 and 28.2 degrees C.
         attr-defs: Fang et al., 2004
         data-min: NA
         data-max: NA
@@ -1490,7 +1603,7 @@ entities:
       -
         attr-label: height_18_22
         attr-def: >-
-          Meters of water between 18 and 22 degrees C.
+          Annual sum of the daily water column height between 18 and 22 degrees C.
           This range is used to denote optimal age 0 thermal habitat
         attr-defs: Christie and Regier, 1988
         data-min: NA
@@ -1499,7 +1612,7 @@ entities:
       -
         attr-label: vol_18_22
         attr-def: >-
-          Volume of water between 18 and 22 degrees C.
+          Annual sum of the daily waterbody volume between 18 and 22 degrees C.
         attr-defs: Christie and Regier, 1988
         data-min: NA
         data-max: NA
@@ -1516,7 +1629,7 @@ entities:
       -
         attr-label: height_19.3_23.3
         attr-def: >-
-          Meters of water between 19.3 and 23.3 degrees C.
+          Annual sum of the daily water column height between 19.3 and 23.3 degrees C.
           This range is used to denote YOY optimum
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1525,7 +1638,7 @@ entities:
       -
         attr-label: vol_19.3_23.3
         attr-def: >-
-          Volume of water between 19.3 and 23.3 degrees C.
+          Annual sum of the daily waterbody volume between 19.3 and 23.3 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1542,7 +1655,7 @@ entities:
       -
         attr-label: height_19_23
         attr-def: >-
-          Meters of water between 19 and 23 degrees C.
+          Annual sum of the daily water column height between 19 and 23 degrees C.
           This range is used to denote optimal thermal habitat
         attr-defs: Cline et al., 2013
         data-min: NA
@@ -1551,7 +1664,7 @@ entities:
       -
         attr-label: vol_19_23
         attr-def: >-
-          Volume of water between 19 and 23 degrees C.
+          Annual sum of the daily waterbody volume between 19 and 23 degrees C.
         attr-defs: Cline et al., 2013
         data-min: NA
         data-max: NA
@@ -1568,7 +1681,7 @@ entities:
       -
         attr-label: height_20.6_23.2
         attr-def: >-
-          Meters of water between 20.6 and 23.2 degrees C.
+          Annual sum of the daily water column height between 20.6 and 23.2 degrees C.
           This range is used to denote optimal thermal habitat
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1577,7 +1690,7 @@ entities:
       -
         attr-label: vol_20.6_23.2
         attr-def: >-
-          Volume of water between 20.6 and 23.2 degrees C.
+          Annual sum of the daily waterbody volume between 20.6 and 23.2 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1594,7 +1707,7 @@ entities:
       -
         attr-label: height_20_30
         attr-def: >-
-          Meters of water between 20 and 30 degrees C.
+          Annual sum of the daily water column height between 20 and 30 degrees C.
           This range is used to denote larval optimum
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1603,7 +1716,7 @@ entities:
       -
         attr-label: vol_20_30
         attr-def: >-
-          Volume of water between 20 and 30 degrees C.
+          Annual sum of the daily waterbody volume between 20 and 30 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1620,7 +1733,7 @@ entities:
       -
         attr-label: height_21_100
         attr-def: >-
-          Meters of water between 21 and 100 degrees C.
+          Annual sum of the daily water column height between 21 and 100 degrees C.
           This range is used to denote growing season for YOY
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1629,7 +1742,7 @@ entities:
       -
         attr-label: vol_21_100
         attr-def: >-
-          Volume of water between 21 and 100 degrees C.
+          Annual sum of the daily waterbody volume between 21 and 100 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1646,7 +1759,7 @@ entities:
       -
         attr-label: height_22_23
         attr-def: >-
-          Meters of water between 22 and 23 degrees C.
+          Annual sum of the daily water column height between 22 and 23 degrees C.
           This range is used to denote optimal thermal habitat
         attr-defs: Casselman, 2002
         data-min: NA
@@ -1655,7 +1768,7 @@ entities:
       -
         attr-label: vol_22_23
         attr-def: >-
-          Volume of water between 22 and 23 degrees C.
+          Annual sum of the daily waterbody volume between 22 and 23 degrees C.
         attr-defs: Casselman, 2002
         data-min: NA
         data-max: NA
@@ -1672,7 +1785,7 @@ entities:
       -
         attr-label: height_23_31
         attr-def: >-
-          Meters of water between 23 and 31 degrees C.
+          Annual sum of the daily water column height between 23 and 31 degrees C.
           This range is used to denote juvenile optimum
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1681,7 +1794,7 @@ entities:
       -
         attr-label: vol_23_31
         attr-def: >-
-          Volume of water between 23 and 31 degrees C.
+          Annual sum of the daily waterbody volume between 23 and 31 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1698,7 +1811,7 @@ entities:
       -
         attr-label: height_25_29
         attr-def: >-
-          Meters of water between 25 and 29 degrees C.
+          Annual sum of the daily water column height between 25 and 29 degrees C.
           This range is used to denote larval optimum
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1707,7 +1820,7 @@ entities:
       -
         attr-label: vol_25_29
         attr-def: >-
-          Volume of water between 25 and 29 degrees C.
+          Annual sum of the daily waterbody volume between 25 and 29 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1724,7 +1837,7 @@ entities:
       -
         attr-label: height_26.2_32
         attr-def: >-
-          Meters of water between 26.2 and 32 degrees C.
+          Annual sum of the daily water column height between 26.2 and 32 degrees C.
           This range is used to denote good growth habitat
         attr-defs: Countant, 1977
         data-min: NA
@@ -1733,7 +1846,7 @@ entities:
       -
         attr-label: vol_26.2_32
         attr-def: >-
-          Volume of water between 26.2 and 32 degrees C.
+          Annual sum of the daily waterbody volume between 26.2 and 32 degrees C.
         attr-defs: Countant, 1977
         data-min: NA
         data-max: NA
@@ -1750,7 +1863,7 @@ entities:
       -
         attr-label: height_26_28
         attr-def: >-
-          Meters of water between 26 and 28 degrees C.
+          Annual sum of the daily water column height between 26 and 28 degrees C.
           This range is used to denote subadult optimum
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1759,7 +1872,7 @@ entities:
       -
         attr-label: vol_26_28
         attr-def: >-
-          Volume of water between 26 and 28 degrees C.
+          Annual sum of the daily waterbody volume between 26 and 28 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1776,7 +1889,7 @@ entities:
       -
         attr-label: height_26_30
         attr-def: >-
-          Meters of water between 26 and 30 degrees C.
+          Annual sum of the daily water column height between 26 and 30 degrees C.
           This range is used to denote adult optimum
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1785,7 +1898,7 @@ entities:
       -
         attr-label: vol_26_30
         attr-def: >-
-          Volume of water between 26 and 30 degrees C.
+          Annual sum of the daily waterbody volume between 26 and 30 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1802,7 +1915,7 @@ entities:
       -
         attr-label: height_28_29
         attr-def: >-
-          Meters of water between 28 and 29 degrees C.
+          Annual sum of the daily water column height between 28 and 29 degrees C.
           This range is used to denote juvenile optimum
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1811,7 +1924,7 @@ entities:
       -
         attr-label: vol_28_29
         attr-def: >-
-          Volume of water between 28 and 29 degrees C.
+          Annual sum of the daily waterbody volume between 28 and 29 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1829,7 +1942,7 @@ entities:
       -
         attr-label: height_28_32
         attr-def: >-
-          Meters of water between 28 and 32 degrees C.
+          Annual sum of the daily water column height between 28 and 32 degrees C.
           This range is used to denote juvenile optimum
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1838,7 +1951,7 @@ entities:
       -
         attr-label: vol_28_32
         attr-def: >-
-          Volume of water between 28 and 32 degrees C.
+          Annual sum of the daily waterbody volume between 28 and 32 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1856,7 +1969,7 @@ entities:
       -
         attr-label: height_29_100
         attr-def: >-
-          Meters of water between 29 and 100 degrees C.
+          Annual sum of the daily water column height between 29 and 100 degrees C.
           This range is used to denote lethal habitat
         attr-defs: Fang et al., 2004
         data-min: NA
@@ -1865,7 +1978,7 @@ entities:
       -
         attr-label: vol_29_100
         attr-def: >-
-          Volume of water between 29 and 100 degrees C.
+          Annual sum of the daily waterbody volume between 29 and 100 degrees C.
         attr-defs: Fang et al., 2004
         data-min: NA
         data-max: NA
@@ -1883,7 +1996,7 @@ entities:
       -
         attr-label: height_30_31
         attr-def: >-
-          Meters of water between 30 and 31 degrees C.
+          Annual sum of the daily water column height between 30 and 31 degrees C.
           This range is used to denote adult optimum
         attr-defs: Wismer and Christie, 1987
         data-min: NA
@@ -1892,7 +2005,7 @@ entities:
       -
         attr-label: vol_30_31
         attr-def: >-
-          Volume of water between 30 and 31 degrees C.
+          Annual sum of the daily waterbody volume between 30 and 31 degrees C.
         attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
@@ -1903,80 +2016,6 @@ entities:
           Days in which there is any part of water column between 30 and 31 degrees C.
           This range is used to denote adult optimum
         attr-defs: Wismer and Christie, 1987
-        data-min: NA
-        data-max: NA
-        data-units: days
-      -
-        attr-label: spring_days_in_10.5_15.5
-        attr-def: >-
-          Duration of optimal incubation period where surface temperature
-          is between 10.5-15.5 degrees C (Spring only)
-        attr-defs: Wismer and Christie, 1987
-        data-min: NA
-        data-max: NA
-        data-units: days before June 1
-      -
-        attr-label: post_ice_warm_rate
-        attr-def: >-
-          Average change in surface temp (degrees C per day) 30 days post ice off
-        attr-defs: Busch et al., 1975; Madenijan et al., 1996
-        data-min: NA
-        data-max: NA
-        data-units: degrees C per day
-      -
-        attr-label: date_over_{temp}
-        attr-def: >-
-          Date where average surface temperature reaches {temp} degrees C. {temp} is
-          one of 8.9 (date of spawning temp), 16.7 (hatch date), 18 (date of spawning
-          temp for bass), or 21 (date of spawning temp for bass).
-        attr-defs: Wismer and Christie, 1987
-        data-min: NA
-        data-max: NA
-        data-units: Julian day
-      -
-        attr-label: SmetaTopD_mean
-        attr-def: Mean epilmnion meters during the longest stratified period
-        attr-defs: Read et al., 2011
-        data-min: NA
-        data-max: NA
-        data-units: linear distance (m)
-      -
-        attr-label: SmetaBotD_mean
-        attr-def: Mean hypolimnion meters during the longest stratified period
-        attr-defs: Read et al., 2011
-        data-min: NA
-        data-max: NA
-        data-units: linear distance (m)
-      -
-        attr-label: mean_epi_vol
-        attr-def: Mean epilmnion volume during longest stratified period
-        attr-defs: Read et al., 2021
-        data-min: NA
-        data-max: NA
-        data-units: volume (m^3*1000)
-      -
-        attr-label: mean_hyp_vol
-        attr-def: Mean hypolimnion volume during longest stratified period
-        attr-defs: Read et al., 2021
-        data-min: NA
-        data-max: NA
-        data-units: volume (m^3*1000)
-      -
-        attr-label: mean_epi_hypo_ratio
-        attr-def: Mean epilmnion volume divided by mean hypolimnion volume
-        attr-defs: Read et al., 2021
-        data-min: NA
-        data-max: NA
-        data-units: unitless (ratio)
-      -
-        attr-label: open_water_duration
-        attr-def: >-
-          Number of days between ice-off for this year's winter season and ice-on
-          for the next year's winter season. If `NA`, the open water period could
-          not be calculated because there was either not an ice-off date for this
-          year's winter season or an ice-on date for the next year's winter season
-          or both were missing.
-        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: days
