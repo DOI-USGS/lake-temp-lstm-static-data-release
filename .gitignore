@@ -16,6 +16,7 @@ out_xml/*.xml
 in_data/*
 !in_data/.empty
 !in_data/states_poly.rds
+!in_data/*.csv
 tmp_data/*
 !tmp_data/EMPTY
 compress_tmp/*
