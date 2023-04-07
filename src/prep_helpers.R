@@ -360,3 +360,30 @@ prep_GCM_drivers <- function(out_file, driver_file_dir, tmp_dir, gcm_driver_rege
   # Delete the recently moved files since they are now in a zip file
   file.remove(files_moved) 
 }
+
+# Format and combine the evaluation metrics files provided in 
+# https://github.com/USGS-R/lake-temp-lstm-static-data-release/issues/63
+combine_eval_metrics <- function(out_file, ealstm_csv, glm_nldas_csv, glm_gcm_csv) {
+  
+  # Add `model` and `driver` columns
+  ealstm_metrics <- read_csv(ealstm_csv, col_types=cols()) %>% 
+    mutate(model = 'EA-LSTM', driver = 'NLDAS')
+  
+  glm_nldas_metrics <- read_csv(glm_nldas_csv, col_types=cols()) %>% 
+    mutate(model = 'GLM')
+  
+  # Also add `RMSE` but all are NA for GCM metrics
+  glm_gcm_metrics <- read_csv(glm_gcm_csv, col_types=cols()) %>% 
+    mutate(model = 'GLM',
+           driver = sprintf('GCM-%s', driver),
+           RMSE = NA) 
+  
+  # Combine and rearrange columns (bind_rows is smart enough to
+  # merge without needing to first have columns in the same order)
+  combined_eval_metrics <- ealstm_metrics %>% 
+    bind_rows(glm_nldas_metrics) %>% 
+    bind_rows(glm_gcm_metrics) %>% 
+    select(model, driver, season, n_obs, n_lakes, bias, RMSE)
+  
+  write_csv(combined_eval_metrics, out_file)
+}
