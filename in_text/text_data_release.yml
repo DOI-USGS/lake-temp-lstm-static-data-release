@@ -2021,6 +2021,65 @@ entities:
         data-max: NA
         data-units: days
   -
+    data-name: lake_temp_model_evaluation_metrics.csv
+    data-description: Evaluation metrics for GLM and EA-LSTM predictions
+      organized by season and driver type, and the number of observations and
+      lakes used to compute those metrics.
+    attributes:
+    -
+      attr-label: model
+      attr-def: >-
+        Lake temperature model, either "GLM" (General Lakes Model) or "EA-LSTM" (entity-aware long short-term memory).
+      attr-defs: NA
+      data-min: NA
+      data-max: NA
+      data-units: NA 
+    -
+      attr-label: driver
+      attr-def: Meteorological driver dataset used as input to make predictions, either "NLDAS" or one of six GCM driver datasets: "GCM-ACCESS", 
+      attr-defs: NA
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: season
+      attr-def: The yearly season during which predictions were made, either
+        "spring" (day of year 60 to 172), "summer" (day of year 173 to 242),
+        "fall" (day of year 243 to 334), "winter" (day of year 335 to 59), or
+        "overall" (all seasons).
+      attr-defs: NA
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: n_obs
+      attr-def: Number of temperature observations used to compute metrics.
+      attr-defs: NA
+      data-min: 15455
+      data-max: 2350373
+      data-units: observations
+    -
+      attr-label: n_lakes
+      attr-def: Number of lakes that provide observations used to compute metrics.
+      attr-defs: NA
+      data-min: 183
+      data-max: 3688
+      data-units: lakes
+    -
+      attr-label: bias
+      attr-def: Bias of the predictions, computed as the median of the predictions minus the observations.
+      attr-defs: NA
+      data-min: -0.54028
+      data-max: 0.90403
+      data-units: degrees C
+    -
+      attr-label: RMSE
+      attr-def: Root mean squared error of the predictions.
+      attr-defs: NA
+      data-min: 1.560
+      data-max: 3.182
+      data-units: degrees C
+  -
     data-name: extract_output_from_netCDFs.R
     data-description: >-
       An R script showing examples for how to pull lake temperature predictions and meteorological data from
@@ -2242,3 +2301,32 @@ liability-statement: >-
   Although these data and associated metadata have been reviewed for accuracy and completeness and approved for release by the U.S. Geological Survey (USGS),
   no warranty expressed or implied is made regarding the display or utility of the data on any other system or for general or scientific purposes, nor shall
   the act of distribution constitute any such warranty.
+data-units: Date 
+data-units: Date  
+data-units: J/m^2 * days
+data-units: Julian day
+data-units: NA
+data-units: NA 
+data-units: NA  
+data-units: W m^-2
+data-units: W m^-2	
+data-units: days
+data-units: days before June 1
+data-units: decimal-degrees
+data-units: degrees C
+data-units: degrees C		
+data-units: degrees C * days
+data-units: degrees C per day
+data-units: degrees Celcius
+data-units: depth (m)
+data-units: linear distance (m)
+data-units: m day^-1
+data-units: m day^-1 	
+data-units: m s^-1 	
+data-units: meters
+data-units: meters^-1
+data-units: percent
+data-units: square meters
+data-units: unitless (CV)
+data-units: unitless (ratio)
+data-units: volume (m^3*1000)
