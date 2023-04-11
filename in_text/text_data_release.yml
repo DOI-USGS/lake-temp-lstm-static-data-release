@@ -2036,7 +2036,7 @@ entities:
       data-units: NA 
     -
       attr-label: driver
-      attr-def: Meteorological driver dataset used as input to make predictions, either "NLDAS" or one of six GCM driver datasets: "GCM-ACCESS", 
+      attr-def: Meteorological driver dataset used as input to make predictions, either "NLDAS" or one of six GCM driver datasets: "GCM-ACCESS", "GCM-CNRM", "GCM-GFDL", "GCM-IPSL", "GCM-MIROC5", or "GCM-MRI".
       attr-defs: NA
       data-min: NA
       data-max: NA
@@ -2301,32 +2301,3 @@ liability-statement: >-
   Although these data and associated metadata have been reviewed for accuracy and completeness and approved for release by the U.S. Geological Survey (USGS),
   no warranty expressed or implied is made regarding the display or utility of the data on any other system or for general or scientific purposes, nor shall
   the act of distribution constitute any such warranty.
-data-units: Date 
-data-units: Date  
-data-units: J/m^2 * days
-data-units: Julian day
-data-units: NA
-data-units: NA 
-data-units: NA  
-data-units: W m^-2
-data-units: W m^-2	
-data-units: days
-data-units: days before June 1
-data-units: decimal-degrees
-data-units: degrees C
-data-units: degrees C		
-data-units: degrees C * days
-data-units: degrees C per day
-data-units: degrees Celcius
-data-units: depth (m)
-data-units: linear distance (m)
-data-units: m day^-1
-data-units: m day^-1 	
-data-units: m s^-1 	
-data-units: meters
-data-units: meters^-1
-data-units: percent
-data-units: square meters
-data-units: unitless (CV)
-data-units: unitless (ratio)
-data-units: volume (m^3*1000)
