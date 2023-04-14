@@ -2047,7 +2047,10 @@ entities:
       data-units: NA 
     -
       attr-label: driver
-      attr-def: Meteorological driver dataset used as input to make predictions, either "NLDAS" or one of six GCM driver datasets: "GCM-ACCESS", "GCM-CNRM", "GCM-GFDL", "GCM-IPSL", "GCM-MIROC5", or "GCM-MRI".
+      attr-def: >-
+        Meteorological driver dataset used as input to make predictions, either "NLDAS" 
+        or one of six GCM driver datasets: "GCM-ACCESS", "GCM-CNRM", "GCM-GFDL", "GCM-IPSL", 
+        "GCM-MIROC5", or "GCM-MRI".
       attr-defs: NA
       data-min: NA
       data-max: NA
