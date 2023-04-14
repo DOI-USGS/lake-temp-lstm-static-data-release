@@ -156,6 +156,13 @@ targets:
     command: csv_to_feather(
       out_feather = target_name,
       in_csv = '../../lake-temp/lake-temperature-out/3_summarize/out/annual_metrics_glm3_pb0gcm.csv')
+  
+  out_data/lake_temp_model_evaluation_metrics.csv:
+    command: combine_eval_metrics(
+      out_file = target_name,
+      ealstm_csv = 'in_data/evaluation_metrics_EALSTM.csv',
+      glm_nldas_csv = 'in_data/evaluation_metrics_NLDAS.csv',
+      glm_gcm_csv = 'in_data/evaluation_metrics_GCM.csv')
         
   out_data/netCDF_extract_utils.R:
     command: file.copy(
@@ -194,6 +201,7 @@ targets:
       "out_data/lake_temp_preds_GLM_GCM_MRI.zip",
       "out_data/lake_temperature_metrics_GLM_NLDAS.feather",
       "out_data/lake_temperature_metrics_GLM_GCM.feather",
+      "out_data/lake_temp_model_evaluation_metrics.csv",
       "out_data/netCDF_extract_utils.R",
       "out_data/extract_output_from_netCDFs.R",
       "out_data/lake_locations.png",
