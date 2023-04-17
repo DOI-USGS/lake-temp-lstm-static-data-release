@@ -7,6 +7,7 @@
 
 build/*
 out_data/*.csv
+out_data/*.feather
 out_data/*.zip
 out_data/*.R
 out_data/*.ind
@@ -15,6 +16,7 @@ out_xml/*.xml
 in_data/*
 !in_data/.empty
 !in_data/states_poly.rds
+!in_data/*.csv
 tmp_data/*
 !tmp_data/EMPTY
 compress_tmp/*

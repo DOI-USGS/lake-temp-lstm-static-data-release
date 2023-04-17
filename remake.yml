@@ -9,6 +9,7 @@ packages:
   - purrr
   - targets
   - yaml
+  - zip
 
 sources:
   - src/sb_utils.R
@@ -24,9 +25,9 @@ targets:
   lstm_site_ids:
     command: prep_site_ids('../../lake-temp/lake-temperature-lstm-static/lake_metadata_lstm.csv', is_lstm = I(TRUE))
   glm_nldas_site_ids:
-    command: prep_site_ids('out_data/lake_temperature_metrics_GLM_NLDAS.csv')
+    command: prep_site_ids('out_data/lake_temperature_metrics_GLM_NLDAS.feather')
   glm_gcm_site_ids:
-    command: prep_site_ids('out_data/lake_temperature_metrics_GLM_GCM.csv')
+    command: prep_site_ids('out_data/lake_temperature_metrics_GLM_GCM.feather')
   
   nldas_zipfile_pattern:
     command: c(I('out_data/meteorological_inputs_NLDAS_%s.zip'))
@@ -34,7 +35,7 @@ targets:
     command: prep_nldas_driver_info(
       data_file = '../../lake-temp/lake-temperature-lstm-static/6_predict/out/all_meteo_fl_values.csv', 
       lakes_in_release = lstm_site_ids,
-      n_zips = 8)
+      n_zips = 2)
   gcm_cell_to_site_xwalk:
     command: prep_gcm_driver_info(
       data_file = '../../lake-temp/lake-temperature-model-prep/7_drivers_munge/out/lake_cell_tile_xwalk.csv', 
@@ -94,7 +95,7 @@ targets:
       lakes_in_release = lstm_site_ids,
       earliest_prediction = I('1979-01-02'))
   
-  # TODO: This needs to be split into multiple files! Too big for just one.
+  # This needs to be split into multiple files! Too big for just one.
   out_data/meteorological_inputs_NLDAS_zips.ind:
     command: prep_NLDAS_drivers(
       ind_file = target_name,
@@ -146,17 +147,22 @@ targets:
   out_data/lake_temp_preds_GLM_GCM_MRI.zip:
     command: prep_netcdfs(out_file = target_name, group_regex = I('lake_temp_preds_glm_gcm_MRI_([A-Z]{2})_uncompressed.nc'))
   
-  out_data/lake_temperature_metrics_GLM_NLDAS.csv:
-    command: file.copy(
-      to = target_name,
-      from = '../../lake-temp/lake-temperature-out/3_summarize/out/annual_metrics_glm3_pb0nldas.csv',
-      overwrite = TRUE)
+  out_data/lake_temperature_metrics_GLM_NLDAS.feather:
+    command: csv_to_feather(
+      out_feather = target_name,
+      in_csv = '../../lake-temp/lake-temperature-out/3_summarize/out/annual_metrics_glm3_pb0nldas.csv')
       
-  out_data/lake_temperature_metrics_GLM_GCM.csv:
-    command: file.copy(
-      to = target_name,
-      from = '../../lake-temp/lake-temperature-out/3_summarize/out/annual_metrics_glm3_pb0gcm.csv',
-      overwrite = TRUE)
+  out_data/lake_temperature_metrics_GLM_GCM.feather:
+    command: csv_to_feather(
+      out_feather = target_name,
+      in_csv = '../../lake-temp/lake-temperature-out/3_summarize/out/annual_metrics_glm3_pb0gcm.csv')
+  
+  out_data/lake_temp_model_evaluation_metrics.csv:
+    command: combine_eval_metrics(
+      out_file = target_name,
+      ealstm_csv = 'in_data/evaluation_metrics_EALSTM.csv',
+      glm_nldas_csv = 'in_data/evaluation_metrics_NLDAS.csv',
+      glm_gcm_csv = 'in_data/evaluation_metrics_GCM.csv')
         
   out_data/netCDF_extract_utils.R:
     command: file.copy(
@@ -193,8 +199,9 @@ targets:
       "out_data/lake_temp_preds_GLM_GCM_IPSL.zip",
       "out_data/lake_temp_preds_GLM_GCM_MIROC5.zip",
       "out_data/lake_temp_preds_GLM_GCM_MRI.zip",
-      "out_data/lake_temperature_metrics_GLM_NLDAS.csv",
-      "out_data/lake_temperature_metrics_GLM_GCM.csv",
+      "out_data/lake_temperature_metrics_GLM_NLDAS.feather",
+      "out_data/lake_temperature_metrics_GLM_GCM.feather",
+      "out_data/lake_temp_model_evaluation_metrics.csv",
       "out_data/netCDF_extract_utils.R",
       "out_data/extract_output_from_netCDFs.R",
       "out_data/lake_locations.png",

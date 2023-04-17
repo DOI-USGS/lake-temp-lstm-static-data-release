@@ -44,3 +44,8 @@ scipiper_copy <- function(out_file, data_file, repo_path = '../../lake-temp/lake
   scipiper_freshen_files(data_file, repo_path)
   file.copy(from = data_file, to = out_file, overwrite = TRUE)
 }
+
+csv_to_feather <- function(out_feather, in_csv) {
+  readr::read_csv(in_csv) %>% 
+    arrow::write_feather(out_feather)
+}

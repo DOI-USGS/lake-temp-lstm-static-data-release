@@ -1,3 +1,9 @@
+#################################################################
+# Author: Hayley Corson-Dosch                                   #
+# Email: hcorson-dosch@usgs.gov                                 #
+# Content: helper functions for `extract_output_from_netCDFs.R` #
+#################################################################
+
 #' @title pull gcm data for cells
 #' @description for the specified `cell_nos`, pull gcm data from the
 #' specified `nc_file`. The data will be pulled for all dates
