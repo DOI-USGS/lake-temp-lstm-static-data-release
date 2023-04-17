@@ -2161,8 +2161,13 @@ process-description: >-
   This input data covers three different time periods (1981-2000, 2040-2059, and 2080-2099) and is referred to as "GCM" throughout this data release. 
   
   The GCM windspeeds were abnormally low compared to the NLDAS windspeed for the same date and location. As windspeed is an important factor in 
-  lake temperature modeling due to its impact on mixing, the GCM windspeeds between 1980-1999 were statistically transformed, such that they 
-  aligned with the distribution of windspeed from NLDAS. The same statistical transform was applied to the GCM windspeeds for future dates. 
+  lake temperature modeling due to its impact on mixing, the GCM windspeeds between 1981-2000 were statistically transformed, such that they 
+  aligned with the distribution of windspeed from NLDAS. To do this, a discrete frequency distribution was created for NLDAS windspeeds between
+  1981-2000 based on bins of 0.1 m/s. Next, a global distribution of GCM windspeeds from 1981-2000 was generated such that the number of bins and
+  counts per bin matched the NLDAS distribution but the binwidth was allowed to vary. For each bin, the mean windspeed was calculated for both the 
+  NLDAS windspeeds and the GCM windspeeds. Then, the difference between the means of each bin was calculated between the corresponding NLDAS and
+  GCM ranked bins. This difference was used as a bin-specific shift and applied to the GCM windspeeds for each of the three different time periods.
+  On average, GCM mean windspeed increased by 0.82 m/s (22%) and standard deviation of windspeed increased by 0.24 m/s (15%).
 
   In this data release, lakes were discretized into a series of depth intervals for EALSTM modeling input/output. The top 10 meters of the lake were discretized 
   into 0.5 m intervals. From 10 to 20 m, 1 m intervals were used. From 20 to 40 m, 2 m intervals were used. From 40 to 80 m, 5 m intervals were used. These same depth 
