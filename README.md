@@ -40,3 +40,4 @@ googledrive::drive_find(n_max = 1)
 
 * *Step 4:* The `.Rprofile` file in this repo is currently setup to load `scipiper` and set the gargle options described above. Update that file as needed so that these options are automatically set when you start R on Tallgrass.
 
+The above authentication workflow stopped working when I returned to this in March 2023. To save time, I manually uploaded the freshened files to the appropriate location myself and the workflow is able to keep going. E.g. I downloaded the raw `lake-temperature-model-prep/7b_temp_merge/out/temp_data_with_sources.feather` file (not the `.ind`) and uploaded to Caldera manually. Then, I reran this workflow and it says "Freshening ..." but it skips the actual `sc_retreive()` step that downloads from GD since the file matches the ind hash.

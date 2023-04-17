@@ -95,7 +95,10 @@ do_item_replace_tasks <- function(sb_id, files, sources) {
   post_finished <- FALSE
   while (!post_finished){
     # Build the tasks
-    loop_tasks(task_plan = task_plan, task_makefile = task_yml, num_tries = 3)
+    loop_tasks(task_plan = task_plan, task_makefile = task_yml, num_tries = 3,
+               # Force everything to reupload to SB so that they appear in the
+               # appropriate order by date of upload
+               force=TRUE)
     upload_timestamps <- remake::fetch(final_target, remake_file=task_yml)
     # seems we need a delay before calling item_list_files, since the files need to be indexed first
     Sys.sleep(1.5)
