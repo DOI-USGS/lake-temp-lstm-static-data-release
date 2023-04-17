@@ -904,7 +904,9 @@ entities:
       data-units: meters
     -
       attr-label: temp
-      attr-def: Water temperature
+      attr-def: >- 
+        Water temperature; GLM can predict NA values at the bottom of a lake due to changes in the 
+        water column height, e.g. during ice formation or melting (see Hipsey et al., 2019).
       attr-defs: NA
       data-min: NA
       data-max: NA
@@ -1047,7 +1049,10 @@ entities:
         attr-label: bottom_temp_at_strat
         attr-def: >-
           Water temperature 0.1m from lake bottom on day of stratification (as defined
-          by "stratification_onset_yday"). Will be NA for any stratified period less than 30 days.
+          by "stratification_onset_yday"). This will be NA for any stratified period less than 
+          30 days. It can also be NA if the GLM-predicted temperature at the bottom is NA, 
+          which can happen due to changes in the water column height, e.g. during ice formation 
+          or melting (see Hipsey et al., 2019).
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
@@ -1094,7 +1099,10 @@ entities:
           Mean temperature at {depth} for {month}. {depth} is either "surf" for
           surface or "bot" for bottom. The lake bottom is considered 0.1 m from the max 
           depth on that day. {month} is the 3 letter abbreviation for one
-          of the 12 months, Jan through Dec.
+          of the 12 months, Jan through Dec. This could be NA for bottom depths 
+          when there are NA temperature predictions because GLM can predict NA 
+          values at the bottom of a lake due to changes in the water column height, 
+          e.g. during ice formation or melting (see Hipsey et al., 2019).
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
@@ -1105,7 +1113,10 @@ entities:
           Maximum temperature at {depth} for {month}. {depth} is either "surf" for
           surface or "bot" for bottom. The lake bottom is considered 0.1 m from the max 
           depth on that day. {month} is the 3 letter abbreviation for one
-          of the 12 months, Jan (January) through Dec (December).
+          of the 12 months, Jan (January) through Dec (December). This could be NA 
+          for bottom depths when there are NA temperature predictions because GLM can predict NA 
+          values at the bottom of a lake due to changes in the water column height, 
+          e.g. during ice formation or melting (see Hipsey et al., 2019).
         attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
@@ -2036,7 +2047,10 @@ entities:
       data-units: NA 
     -
       attr-label: driver
-      attr-def: Meteorological driver dataset used as input to make predictions, either "NLDAS" or one of six GCM driver datasets: "GCM-ACCESS", "GCM-CNRM", "GCM-GFDL", "GCM-IPSL", "GCM-MIROC5", or "GCM-MRI".
+      attr-def: >-
+        Meteorological driver dataset used as input to make predictions, either "NLDAS" 
+        or one of six GCM driver datasets: "GCM-ACCESS", "GCM-CNRM", "GCM-GFDL", "GCM-IPSL", 
+        "GCM-MIROC5", or "GCM-MRI".
       attr-defs: NA
       data-min: NA
       data-max: NA
